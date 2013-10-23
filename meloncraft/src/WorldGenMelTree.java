@@ -76,6 +76,7 @@ public class WorldGenMelTree extends WorldGenerator
                                !block.isLeaves(par1World, l1, i1, j1) &&
                                 k1 != MelonCraft.melonGrass.blockID &&
                                 k1 != MelonCraft.melonDirt.blockID &&
+                                k1 != MelonCraft.frostyGrass.blockID &&
                                !block.isWood(par1World, l1, i1, j1))
                             {
                                 flag = false;
@@ -97,7 +98,7 @@ public class WorldGenMelTree extends WorldGenerator
             {
                 i1 = par1World.getBlockId(par3, par4 - 1, par5);
                 Block soil = Block.blocksList[i1];
-                boolean isSoil = (soil != null && soil.blockID==MelonCraft.melonGrass.blockID) || (soil != null && soil.blockID==MelonCraft.melonDirt.blockID);
+                boolean isSoil = (soil != null && soil.blockID==MelonCraft.melonGrass.blockID) || (soil != null && soil.blockID==MelonCraft.melonDirt.blockID) || (soil != null && soil.blockID==MelonCraft.frostyGrass.blockID);
 
                 if (isSoil && par4 < 256 - l - 1)
                 {

@@ -46,7 +46,7 @@ public class MelonPick extends Item {
 
         public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block)
 	    {
-        	if(par2Block.blockID==MelonCraft.melonStone.blockID || par2Block.blockID==MelonCraft.magStone.blockID)
+        	if(par2Block instanceof MelonBlockStone || par2Block instanceof BendyOre)
 	        {
 	            return this.speed;
 	        }

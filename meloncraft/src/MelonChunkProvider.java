@@ -396,8 +396,17 @@ public class MelonChunkProvider implements IChunkProvider
         long l2 = (random.nextLong() / 2L) * 2L + 1L;
         random.setSeed((long)i * l1 + (long)j * l2 ^ worldObj.getSeed());
         double d = 0.25D;
+        
+        /*if (random.nextInt(4) == 0)
+        {
+            int i1 = k + random.nextInt(16) + 8;
+            worldObj.getClass();
+            int l4 = random.nextInt(128);
+            int i8 = l + random.nextInt(16) + 8;
+            (new BiomeGen(MelonCraft.frostyGrass.blockID, 128)).generate(worldObj, random, i1, l4, i8);
+        }*/
 
-        if (random.nextInt(1) == 0)
+        if (random.nextInt(2) == 0)
         {
             int i1 = k + random.nextInt(16) + 8;
             worldObj.getClass();
@@ -406,7 +415,7 @@ public class MelonChunkProvider implements IChunkProvider
             (new WorldGenLakes(MelonCraft.melonjuice.blockID)).generate(worldObj, random, i1, l4, i8);
         }
 
-        if (random.nextInt(2) == 0)
+        if (random.nextInt(4) == 0)
         {
             int i1 = k + random.nextInt(16) + 8;
             worldObj.getClass();
@@ -460,14 +469,32 @@ public class MelonChunkProvider implements IChunkProvider
             (new WorldGenMinable(Block.oreCoal.blockID, 16)).generate(worldObj, random, j6, k9, i14);
         }*/
 
-       /* for (int j3 = 0; j3 < 20; j3++)
+        for (int j3 = 0; j3 < 20; j3++)
         {
             int k6 = k + random.nextInt(16);
             worldObj.getClass();
             int l9 = random.nextInt(64);
             int j14 = l + random.nextInt(16);
-            (new WorldGenMinable(Block.oreIron.blockID, 8)).generate(worldObj, random, k6, l9, j14);
-        }*/
+            (new MelonOreGen(MelonCraft.moonstoneOre.blockID, 8)).generate(worldObj, random, k6, l9, j14);
+        }
+        
+        for (int j3 = 0; j3 < 1; j3++)
+        {
+            int k6 = k + random.nextInt(16);
+            worldObj.getClass();
+            int l9 = random.nextInt(64);
+            int j14 = l + random.nextInt(16);
+            (new MelonOreGen(MelonCraft.plazmaOre.blockID, 7)).generate(worldObj, random, k6, l9, j14);
+        }
+        
+        for (int j3 = 0; j3 < 8; j3++)
+        {
+            int k6 = k + random.nextInt(16);
+            worldObj.getClass();
+            int l9 = random.nextInt(64);
+            int j14 = l + random.nextInt(16);
+            (new MelonOreGen(MelonCraft.bendyOre.blockID, 7)).generate(worldObj, random, k6, l9, j14);
+        }
 
         /*for (int k3 = 0; k3 < 2; k3++)
         {
@@ -537,14 +564,27 @@ public class MelonChunkProvider implements IChunkProvider
         
         for (int i11 = 0; i11 < l7; i11++)
         {
+        	if(random.nextInt(4)==0)
+        	{
+            int k15 = k + random.nextInt(16) + 8;
+            int j18 = l + random.nextInt(16) + 8;
+            WorldGenerator worldgenerator = new WorldGenDyeTree(true);
+            worldgenerator.setScale(1.0D, 1.0D, 1.0D);
+            worldgenerator.generate(worldObj, random, k15, worldObj.getHeightValue(k15, j18), j18);
+            System.out.println("Made it to tree generator code!");
+        	}
+        }
+        
+        for (int i11 = 0; i11 < l7; i11++)
+        {
             int k15 = k + random.nextInt(16);
             int j18 = l + random.nextInt(16);
             if(random.nextBoolean()==true)
             {
             WorldGenerator worldgenerator = new WorldGenBigTree(true);
             worldgenerator.setScale(1.0D, 1.0D, 1.0D);
-            //worldgenerator.generate(worldObj, random, k15, worldObj.getHeightValue(k15, j18), j18);
-            //System.out.println("Made it to dyetree generator code!");
+            worldgenerator.generate(worldObj, random, k15, worldObj.getHeightValue(k15, j18), j18);
+            System.out.println("Made it to dyetree generator code!");
             }
         }
         
@@ -662,9 +702,9 @@ public class MelonChunkProvider implements IChunkProvider
             {
                 int j22 = worldObj.getPrecipitationHeight(k + i18, l + l20);
 
-                if (j22 > 64)
+                if (j22 > 64 && worldObj.getBlockId(i18+k, j22-1, l20+l)!=MelonCraft.melonLeaves.blockID && worldObj.getBlockId(i18+k, j22-1, l20+l)!=MelonCraft.dyeLeaf.blockID)
                 {
-                    worldObj.func_94575_c(i18 + k, j22, l20 + l, Block.snow.blockID);
+                    worldObj.func_94575_c(i18 + k, j22-1, l20 + l, MelonCraft.frostyGrass.blockID);
                 }
             }
         }

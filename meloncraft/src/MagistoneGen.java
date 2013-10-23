@@ -7,15 +7,19 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class MagistoneGen extends WorldGenerator
 {
+	int randToGen;
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
+    	{
+    		this.randToGen=MelonCraft.magStone.blockID;
+    	}
     	if (par1World.isAirBlock(par3, par4-1, par5)==true)
         {
             return false;
         }
         else
         {
-            par1World.setBlockAndMetadataWithNotify(par3, par4, par5, MelonCraft.magStone.blockID, 0, 2);
+            par1World.setBlockAndMetadataWithNotify(par3, par4, par5, this.randToGen, 0, 2);
 
             for (int l = 0; l < 1500; ++l)
             {
@@ -61,7 +65,7 @@ public class MagistoneGen extends WorldGenerator
                             j2 = par1World.getBlockId(i1, j1, k1 + 1);
                         }
 
-                        if (j2 == MelonCraft.magStone.blockID)
+                        if (j2 == this.randToGen)
                         {
                             ++l1;
                         }
@@ -69,7 +73,7 @@ public class MagistoneGen extends WorldGenerator
 
                     if (l1 == 1)
                     {
-                        par1World.setBlockAndMetadataWithNotify(i1, j1, k1, MelonCraft.magStone.blockID, 0, 2);
+                        par1World.setBlockAndMetadataWithNotify(i1, j1, k1, this.randToGen, 0, 2);
                     }
                 }
             }

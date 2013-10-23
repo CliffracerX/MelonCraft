@@ -14,7 +14,8 @@ public class MelonBiome extends BiomeGenBase
         this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
         this.spawnableWaterCreatureList.clear();
-        //this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 2, 2, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(MelonZombie.class, 1, 1, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(MelonSheep.class, 4, 1, 2));
         /*this.topBlock = (byte)Block.dirt.blockID;
         this.fillerBlock = (byte)Block.dirt.blockID;
         this.theBiomeDecorator = new BiomeEndDecorator(this);*/

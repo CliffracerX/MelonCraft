@@ -18,10 +18,14 @@ import net.minecraft.world.World;
 public class MelonBlockStone extends Block {
 		String tex;
 		float hard;
-        public MelonBlockStone (int id, Material material, String texture, float hrd) {
+		boolean overwrite;
+		int tr;
+        public MelonBlockStone (int id, Material material, String texture, float hrd, boolean b, int tier) {
                 super(id, material);
                 this.tex=texture;
                 this.hard=hrd;
+                this.overwrite=b;
+                this.tr=tier;
         }
         
         public void func_94332_a(IconRegister iconRegister)
@@ -29,28 +33,9 @@ public class MelonBlockStone extends Block {
                  this.field_94336_cN = iconRegister.func_94245_a("MelonCraft:"+this.tex);
         }
         
-        @SideOnly(Side.CLIENT)
-        public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
-        {
-        	if(par3>63);
-        	if(ModLoader.getMinecraftInstance().gameSettings.particleSetting!=2)
-            if (par5Random.nextInt(24) == 0)
-                if (par1World.getBlockLightValue(par2, par3 + 1, par4) == 15)
-                {
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.2, par3 + 3, par4 + 0.3, 000000000.0D, -0.1D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.5, par3 + 5, par4 + 0.1, 000000000.0D, -0.2D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.2, par3 + 8, par4 + 0.3, 000000000.0D, -0.1D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.3, par3 + 11, par4 + 0.7, 000000000.0D, -0.2D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.3, par3 + 15, par4 + 0.7, 000000000.0D, -0.2D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.2, par3 + 17, par4 + 0.3, 000000000.0D, -0.1D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.5, par3 + 18, par4 + 0.1, 000000000.0D, -0.2D, 0.0D));
-                    ModLoader.getMinecraftInstance().effectRenderer.addEffect((EntityFX)new FallSnowPart(par1World, par2 + 0.3, par3 + 20, par4 + 0.7, 000000000.0D, -0.2D, 0.0D));
-                }
-        }
-        
         public boolean isGenMineableReplaceable(World world, int x, int y, int z)
         {
-            return true;
+            return this.overwrite;
         }
         
         public boolean isOpaqueCube()
@@ -63,13 +48,45 @@ public class MelonBlockStone extends Block {
             return true;
         }
         
-        public void onBlockClicked(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer)
+        public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
         {
-        	if(par5EntityPlayer.getHeldItem()!=null)
+        	if(player.getHeldItem()!=null)
         	{
-            if(par5EntityPlayer.getHeldItem().getItem() == MelonCraft.melWoodPick || par5EntityPlayer.getHeldItem().getItem() == MelonCraft.melStonePick)
+        	if(this.tr==0)
+        	{
+            if(player.getHeldItem().getItem() == MelonCraft.melWoodPick || player.getHeldItem().getItem() == MelonCraft.melStonePick || player.getHeldItem().getItem() == MelonCraft.moonStonePick || player.getHeldItem().getItem() == MelonCraft.plazPick)
             {
             	this.setHardness(this.hard);
+            }
+            else
+            this.setBlockUnbreakable();
+        	}
+        	else if(this.tr==1)
+        	{
+                if(player.getHeldItem().getItem() == MelonCraft.melStonePick || player.getHeldItem().getItem() == MelonCraft.moonStonePick || player.getHeldItem().getItem() == MelonCraft.plazPick)
+                {
+                	this.setHardness(this.hard);
+                }
+                else
+                this.setBlockUnbreakable();
+            }
+        	else if(this.tr==2)
+        	{
+                if(player.getHeldItem().getItem() == MelonCraft.moonStonePick || player.getHeldItem().getItem() == MelonCraft.plazPick)
+                {
+                	this.setHardness(this.hard);
+                }
+                else
+                this.setBlockUnbreakable();
+            }
+        	else if(this.tr==3)
+        	{
+                if(player.getHeldItem().getItem() == MelonCraft.plazPick)
+                {
+                	this.setHardness(this.hard);
+                }
+                else
+                this.setBlockUnbreakable();
             }
             else
             this.setBlockUnbreakable();
