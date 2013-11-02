@@ -25,13 +25,15 @@ public class MelonPick extends Item {
         private String itemTexFile;
         private float speed;
         private int dura;
+        int tier;
 
-		public MelonPick(int id, String TF, int durab, float spd) {
+		public MelonPick(int id, String TF, int durab, float spd, int tier) {
                 super(id);
                 
                 // Constructor Configuration
                 this.dura=durab;
                 this.speed=spd;
+                this.tier=tier;
                 maxStackSize = 1;
                 this.itemTexFile=TF;
                 this.setMaxDamage(this.dura);

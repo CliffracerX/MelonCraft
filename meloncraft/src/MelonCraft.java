@@ -100,8 +100,8 @@ public class MelonCraft {
         public final static Block dyeSap = new MelonSaplingDye(1639, "dyeSap").setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(MelonCraft.MelonTab).setUnlocalizedName("dyeSap");
         public final static Item magDust = new MelonItem(2537, "magiDust", 64).setUnlocalizedName("magDust");
         public final static Item melStick = new MelonItem(2538, "melonStick", 64).setUnlocalizedName("melStick");
-        public final static Item melWoodPick = new MelonPick(2539, "melonwoodPick", 63, 2.0F).setUnlocalizedName("melWoodPick");
-        public final static Item melStonePick = new MelonPick(2540, "melonstonePick", 127, 4.0F).setUnlocalizedName("melStonePick");
+        public final static Item melWoodPick = new MelonPick(2539, "melonwoodPick", 63, 2.0F, 0).setUnlocalizedName("melWoodPick");
+        public final static Item melStonePick = new MelonPick(2540, "melonstonePick", 127, 4.0F, 1).setUnlocalizedName("melStonePick");
         public final static Item rrmws = new ItemMelonwoolSoldier(2541, "rrmwsI", 0).setUnlocalizedName("rrmws");
         public final static Item rgmws = new ItemMelonwoolSoldier(2542, "rgmwsI", 1).setUnlocalizedName("rgmws");
         public final static Item rbmws = new ItemMelonwoolSoldier(2543, "rbmwsI", 2).setUnlocalizedName("rbmws");
@@ -139,7 +139,7 @@ public class MelonCraft {
         public final static Item redMD = new MelonItem(2575, "redMD", 64).setUnlocalizedName("redMD");
         public final static Item greenMD = new MelonItem(2576, "greenMD", 64).setUnlocalizedName("greenMD");
         public final static Item blueMD = new MelonItem(2577, "blueMD", 64).setUnlocalizedName("blueMD");
-        public final static Item moonStonePick = new MelonPick(2580, "moonstonePick", 767, 8.0F).setUnlocalizedName("moonStonePick");
+        public final static Item moonStonePick = new MelonPick(2580, "moonstonePick", 767, 8.0F, 2).setUnlocalizedName("moonStonePick");
         public final static Item moonStoneSword = new MelonSword(2581, "moonstoneSword", 767, 7).setUnlocalizedName("melStoneSword");
         public final static Item moonstoneIngot = new MelonItem(2582, "moonstoneIngot", 64).setUnlocalizedName("blueMD");
         public final static Item MSTH = new MelonArmor(2583, moonStone, MSTIndex, 0, "moonstoneHelm", "MST").setUnlocalizedName("MSTH");
@@ -172,7 +172,7 @@ public class MelonCraft {
         public final static Item PLZC = new MelonArmor(2610, plazma, PLZIndex, 1, "plazChest", "PLZ").setUnlocalizedName("PLZC");
         public final static Item PLZL = new MelonArmor(2611, plazma, PLZIndex, 2, "plazLegs", "PLZ").setUnlocalizedName("PLZL");
         public final static Item PLZB = new MelonArmor(2612, plazma, PLZIndex, 3, "plazBoots", "PLZ").setUnlocalizedName("PLZB");
-        public final static Item plazPick = new MelonPick(2613, "plazPick", 1536, 12.0F).setUnlocalizedName("plazPick");
+        public final static Item plazPick = new MelonPick(2613, "plazPick", 1536, 12.0F, 3).setUnlocalizedName("plazPick");
         public final static Item plazSword = new MelonSword(2614, "plazSword", 1536, 10).setUnlocalizedName("plazSword");
         public final static Item plazmaGem = new MelonItem(2615, "plazmaCrystal", 64).setUnlocalizedName("plazmaGem");
         public final static Item roastMelon = new MelonItem(2616, "roastMelon", 64).setUnlocalizedName("roastMelon");

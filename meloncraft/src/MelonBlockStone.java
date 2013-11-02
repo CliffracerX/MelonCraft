@@ -52,46 +52,19 @@ public class MelonBlockStone extends Block {
         {
         	if(player.getHeldItem()!=null)
         	{
-        	if(this.tr==0)
+        	//if(this.tr==0)
         	{
-            if(player.getHeldItem().getItem() == MelonCraft.melWoodPick || player.getHeldItem().getItem() == MelonCraft.melStonePick || player.getHeldItem().getItem() == MelonCraft.moonStonePick || player.getHeldItem().getItem() == MelonCraft.plazPick)
+            if(player.getHeldItem().getItem() instanceof MelonPick)
             {
+            	MelonPick pick =(MelonPick) player.getHeldItem().getItem();
+            	if(pick.tier>=this.tr)
             	this.setHardness(this.hard);
             }
             else
             this.setBlockUnbreakable();
         	}
-        	else if(this.tr==1)
-        	{
-                if(player.getHeldItem().getItem() == MelonCraft.melStonePick || player.getHeldItem().getItem() == MelonCraft.moonStonePick || player.getHeldItem().getItem() == MelonCraft.plazPick)
-                {
-                	this.setHardness(this.hard);
-                }
-                else
-                this.setBlockUnbreakable();
-            }
-        	else if(this.tr==2)
-        	{
-                if(player.getHeldItem().getItem() == MelonCraft.moonStonePick || player.getHeldItem().getItem() == MelonCraft.plazPick)
-                {
-                	this.setHardness(this.hard);
-                }
-                else
-                this.setBlockUnbreakable();
-            }
-        	else if(this.tr==3)
-        	{
-                if(player.getHeldItem().getItem() == MelonCraft.plazPick)
-                {
-                	this.setHardness(this.hard);
-                }
-                else
-                this.setBlockUnbreakable();
-            }
-            else
-            this.setBlockUnbreakable();
         	}
-            else
-            this.setBlockUnbreakable();
+        	else
+                this.setBlockUnbreakable();
         }
 }
