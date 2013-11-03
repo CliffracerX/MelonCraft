@@ -16,7 +16,7 @@ public class MelonWorldProvider extends WorldProvider
     public void registerWorldChunkManager()
     {
         this.worldChunkMgr = new WorldChunkManagerHell(MelonCraft.biome, 0.5F, 0.0F);
-        this.dimensionId = 16;
+        this.dimensionId = -2;
         
     }
     
@@ -79,7 +79,7 @@ public class MelonWorldProvider extends WorldProvider
 	@Override
     public int getAverageGroundLevel()
     {
-        return 128;
+        return 256;
     }
 
     @Override

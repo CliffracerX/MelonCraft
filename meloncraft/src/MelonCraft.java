@@ -57,7 +57,7 @@ public class MelonCraft {
         public final static Block melonCobble = new MelonBlockStone(203, Material.ground, "melonCobble", 0.5F, true, 0).setHardness(0.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(MelonCraft.MelonTab).setUnlocalizedName("melCobble");
         public final static Block magilava = new MelonWateryBlock(204, Material.ground, "magilava", true).setHardness(0.25F).setStepSound(Block.soundClothFootstep).setCreativeTab(MelonCraft.MelonTab).setLightValue(1.0F).setUnlocalizedName("maglava");
         public final static Block melonjuice = new MelonWateryBlock(205, Material.ground, "melonjuice", false).setHardness(0.25F).setStepSound(Block.soundClothFootstep).setCreativeTab(MelonCraft.MelonTab).setUnlocalizedName("meljuice");
-        public final static Block melonportal = new MelPortBlock(206, Material.ground, "portal").setHardness(0.25F).setStepSound(Block.soundGlassFootstep).setCreativeTab(MelonCraft.MelonTab).setLightValue(1.0F).setUnlocalizedName("melPortal");
+        public final static Block melonportal = new MelPortBlock(206).setHardness(0.25F).setStepSound(Block.soundGlassFootstep).setCreativeTab(MelonCraft.MelonTab).setLightValue(1.0F).setUnlocalizedName("melPortal");
         public final static Block melonPlanks = new MelonBlockBasicOO(1600, Material.ground, "melonPlanks").setHardness(0.25F).setStepSound(Block.soundWoodFootstep).setCreativeTab(MelonCraft.MelonTab).setUnlocalizedName("melPlanks");
         public final static Block melonLog = new MelonBlockBasicOO(1601, Material.ground, "melonLog").setHardness(0.5F).setStepSound(Block.soundWoodFootstep).setCreativeTab(MelonCraft.MelonTab).setUnlocalizedName("melLog");
         public final static Block melonLeaves = new MelonLeaves(1602, "melonLeaves").setHardness(0.125F).setStepSound(Block.soundGrassFootstep).setCreativeTab(MelonCraft.MelonTab).setUnlocalizedName("melLeaves");
@@ -193,6 +193,7 @@ public class MelonCraft {
         public final static Item gDye = new MelonItem(2631, "gDye", 64).setUnlocalizedName("gDye");
         public final static Item bDye = new MelonItem(2632, "bDye", 64).setUnlocalizedName("bDye");
         public final static Item melSheepSpawner = new Spawnegg(2633, "mzSE", 1).setUnlocalizedName("melSheepSpawner");
+        public final static Item portPlace = new MelonPortalPlacer(2634).setUnlocalizedName("portPlace");
         public static final BiomeGenBase biome = new MelonBiome(30);
 
         @SidedProxy(clientSide="meloncraft.src.ClientProxy",
@@ -215,8 +216,8 @@ public class MelonCraft {
         	EntityRegistry.registerModEntity(MelonSheep.class, "MelonSheep", 259, this, 64, 1, true);
             NetworkRegistry.instance().registerGuiHandler(this, new CommonProxy());
                 //Dimension registers
-        	DimensionManager.registerProviderType(16, MelonWorldProvider.class, true);
-            DimensionManager.registerDimension(16, 16);
+        	DimensionManager.registerProviderType(-2, MelonWorldProvider.class, true);
+            DimensionManager.registerDimension(-2, -2);
             //Misc. names
         	LanguageRegistry.instance().addStringLocalization("itemGroup.MelonTab1", "en_US", "Meloncraft loot");
         	//Block names, registerBlocks
@@ -410,6 +411,7 @@ public class MelonCraft {
                 LanguageRegistry.addName(rDye, "Red Dye");
                 LanguageRegistry.addName(gDye, "Green Dye");
                 LanguageRegistry.addName(bDye, "Blue Dye");
+                LanguageRegistry.addName(portPlace, "Melonportal Placer");
                 //Crafting
                 GameRegistry.addRecipe(new ItemStack(melonCobble, 4), "X", 'X', MelonCraft.melonStone);
                 GameRegistry.addRecipe(new ItemStack(melonStone, 1), "XX", "XX", 'X', MelonCraft.melonCobble);
@@ -455,6 +457,7 @@ public class MelonCraft {
                 GameRegistry.addRecipe(new ItemStack(emptyMelBot, 1), "X", "X", 'X', MelonCraft.melonGlass);
                 //GameRegistry.addRecipe(new ItemStack(plazmaOre, 2), "XX", "#X", 'X', MelonCraft.melonStone, '#', MelonCraft.plazmaGem);
                 GameRegistry.addRecipe(new ItemStack(moonShears, 1), "X ", " X", 'X', MelonCraft.moonstoneIngot);
+                GameRegistry.addRecipe(new ItemStack(portPlace, 1), "XXX", "X#X", "XXX", 'X', Block.melon, '#', Block.fenceIron);
                 //Tile entities
                 GameRegistry.registerTileEntity(MelonFurnaceTileEnt.class, "MelonFurnace");
         }
