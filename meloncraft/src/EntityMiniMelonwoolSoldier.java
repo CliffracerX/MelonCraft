@@ -281,6 +281,7 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
                 this.dropItem(MelonCraft.BMWH.itemID, 1);
                	this.setArmor(0);
                 }
+        	}
         	if(par1EntityPlayer.getHeldItem()!= null)
         	{
         	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.magDust)
@@ -377,7 +378,6 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             		}
             	}
             	}
-        	}
         	}
         	return true;
         }
