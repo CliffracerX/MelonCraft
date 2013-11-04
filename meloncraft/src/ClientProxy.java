@@ -13,7 +13,7 @@ public class ClientProxy extends CommonProxy
 	@SideOnly(Side.CLIENT)
     public static void registerRenderInformation()
     {
-		System.out.println("AAAHafgbpijaghon *boom*");
+		System.out.println("Clientproxy existing.  Yay.");
     
     	RenderingRegistry.instance().registerEntityRenderingHandler(EntityMelonwoolSoldier.class, new RenderBiped(new ModelBiped(), 1F));
     	RenderingRegistry.instance().registerEntityRenderingHandler(EntityMiniMelonwoolSoldier.class, new RenderMiniMWS(new ModelMiniMWS(), 1F));

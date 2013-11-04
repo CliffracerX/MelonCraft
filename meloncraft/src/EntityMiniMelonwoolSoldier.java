@@ -254,6 +254,33 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
         
         public boolean interact(EntityPlayer par1EntityPlayer)
         {
+        	if(par1EntityPlayer.getHeldItem()==null)
+        	{
+        		if(this.stickStuff==1)
+        		{
+        		this.dropItem(MelonCraft.melStick.itemID, 1);
+        		this.setStickStuff(0);
+        		}
+        		if(this.armortypeHead==1)
+        		{
+            	this.dropItem(MelonCraft.NMWH.itemID, 1);
+            	this.setArmor(0);
+        		}
+            	if(this.armortypeHead==2)
+            	{
+               	this.dropItem(MelonCraft.RMWH.itemID, 1);
+               	this.setArmor(0);
+            	}
+                if(this.armortypeHead==3)
+                {
+                this.dropItem(MelonCraft.GMWH.itemID, 1);
+               	this.setArmor(0);
+                }
+                if(this.armortypeHead==4)
+                {
+                this.dropItem(MelonCraft.BMWH.itemID, 1);
+               	this.setArmor(0);
+                }
         	if(par1EntityPlayer.getHeldItem()!= null)
         	{
         	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.magDust)
@@ -351,33 +378,6 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             	}
             	}
         	}
-        	if(par1EntityPlayer.getHeldItem()==null)
-        	{
-        		if(this.stickStuff==1)
-        		{
-        		this.dropItem(MelonCraft.melStick.itemID, 1);
-        		this.setStickStuff(0);
-        		}
-        		if(this.armortypeHead==1)
-        		{
-            	this.dropItem(MelonCraft.NMWH.itemID, 1);
-            	this.setArmor(0);
-        		}
-            	if(this.armortypeHead==2)
-            	{
-               	this.dropItem(MelonCraft.RMWH.itemID, 1);
-               	this.setArmor(0);
-            	}
-                if(this.armortypeHead==3)
-                {
-                this.dropItem(MelonCraft.GMWH.itemID, 1);
-               	this.setArmor(0);
-                }
-                if(this.armortypeHead==4)
-                {
-                this.dropItem(MelonCraft.BMWH.itemID, 1);
-               	this.setArmor(0);
-                }
         	}
         	return true;
         }
