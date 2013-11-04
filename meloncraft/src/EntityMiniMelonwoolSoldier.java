@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -120,9 +121,21 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
         	{
         		this.dropItem(MelonCraft.melStick.itemID, 1);
         	}
-        	if(this.armortypeHead!=0)
+        	if(this.getArmor()==1)
         	{
-        		this.dropItem(this.armortypeHead, 1);
+        		this.dropItem(MelonCraft.NMWH.itemID, 1);
+        	}
+        	if(this.getArmor()==2)
+        	{
+        		this.dropItem(MelonCraft.RMWH.itemID, 1);
+        	}
+        	if(this.getArmor()==3)
+        	{
+        		this.dropItem(MelonCraft.GMWH.itemID, 1);
+        	}
+        	if(this.getArmor()==4)
+        	{
+        		this.dropItem(MelonCraft.BMWH.itemID, 1);
         	}
         	//Drop armor types!
         }
@@ -254,29 +267,29 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
         
         public boolean interact(EntityPlayer par1EntityPlayer)
         {
-        	if(par1EntityPlayer.getHeldItem()==null)
+        	if(par1EntityPlayer.getHeldItem()==null && !this.worldObj.isRemote)
         	{
-        		if(this.stickStuff==1)
+        		if(this.getStickStuff()==1)
         		{
         		this.dropItem(MelonCraft.melStick.itemID, 1);
         		this.setStickStuff(0);
         		}
-        		if(this.armortypeHead==1)
+        		if(this.getArmor()==1)
         		{
             	this.dropItem(MelonCraft.NMWH.itemID, 1);
             	this.setArmor(0);
         		}
-            	if(this.armortypeHead==2)
+            	if(this.getArmor()==2)
             	{
                	this.dropItem(MelonCraft.RMWH.itemID, 1);
                	this.setArmor(0);
             	}
-                if(this.armortypeHead==3)
+                if(this.getArmor()==3)
                 {
                 this.dropItem(MelonCraft.GMWH.itemID, 1);
                	this.setArmor(0);
                 }
-                if(this.armortypeHead==4)
+                if(this.getArmor()==4)
                 {
                 this.dropItem(MelonCraft.BMWH.itemID, 1);
                	this.setArmor(0);
@@ -316,7 +329,7 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
         	}
         	this.dataWatcher.updateObject(15, this.getStickStuff());
         	}
-        	if(this.armortypeHead==0)
+        	if(this.getArmor()==0)
         	{
         		if(par1EntityPlayer.getHeldItem()!= null)
             	{
@@ -482,10 +495,10 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
 	            }
 	            else
 	            {
-	                if ((par1DamageSource == DamageSource.anvil || par1DamageSource == DamageSource.fallingBlock) && this.getArmor()>0)
+	                if (this.getArmor()>0)
 	                {
 	                    //this.getCurrentItemOrArmor(4).damageItem(par2 * 4 + this.rand.nextInt(par2 * 2), this);
-	                    par2 = (int)((float)par2 * 0.5F);
+	                    par2/=2;
 	                }
 
 	                this.limbYaw = 1.5F;
@@ -583,5 +596,16 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
 	                return true;
 	            }
 	        }
+	    }
+		
+	    /**
+	     * Drops an item stack at the entity's position. Args: itemID, count
+	     */
+	    public EntityItem dropItem(ItemStack par1, int par2)
+	    {
+	    	if(par1!=null && !this.worldObj.isRemote)
+	        return this.dropItemWithOffset(par1.itemID, par2, 0.0F);
+	    	else
+	    	return null;
 	    }
 }
