@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -292,7 +293,13 @@ public abstract class MelonAnimal extends EntityAgeable implements IAnimals
         int i = MathHelper.floor_double(this.posX);
         int j = MathHelper.floor_double(this.boundingBox.minY);
         int k = MathHelper.floor_double(this.posZ);
-        return this.worldObj.getBlockId(i, j - 1, k) == MelonCraft.melonGrass.blockID && this.worldObj.getFullBlockLightValue(i, j, k) > 8 && super.getCanSpawnHere();
+        MelonAnimal ma = (MelonAnimal) this.worldObj.findNearestEntityWithinAABB(MelonAnimal.class, this.boundingBox.expand(16.0D, 8.0D, 16.0D), this);
+        boolean canSpawn=false;
+        if(ma==null)
+        {
+        	canSpawn=true;
+        }
+        return this.worldObj.getBlockId(i, j - 1, k) == MelonCraft.melonGrass.blockID && this.worldObj.getFullBlockLightValue(i, j, k) > 8 && super.getCanSpawnHere() && canSpawn;
     }
 
     /**

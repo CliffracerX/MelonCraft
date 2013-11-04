@@ -9,6 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 public class MelonPortalPlacer extends Item
 {
+String tex = "roastMelon";
 public MelonPortalPlacer(int par1)
 {
 super(par1);
@@ -17,7 +18,7 @@ this.maxStackSize=1;
 }
 public void func_94581_a(IconRegister iconRegister)
 {
-         iconIndex = iconRegister.func_94245_a("MelonCraft:melonStickMoonTip:");
+         iconIndex = iconRegister.func_94245_a("MelonCraft:"+this.tex);
 }
 public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int X, int Y, int Z, int par7, float par8, float par9, float par10)
 {
