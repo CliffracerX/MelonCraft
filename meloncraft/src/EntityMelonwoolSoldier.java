@@ -169,6 +169,11 @@ public class EntityMelonwoolSoldier extends EntityCreature
             if(var2.capabilities.isCreativeMode==false)
             this.entityToAttack=var2;
             }
+            EntityMiniMelonwoolSoldier var3 = (EntityMiniMelonwoolSoldier) this.worldObj.findNearestEntityWithinAABB(EntityMiniMelonwoolSoldier.class, this.boundingBox.expand(16.0D, 8.0D, 16.0D), this);
+            if(var3!=null && this.getColor()!=var3.getColor())
+            {
+            this.entityToAttack=var3;
+            }
             if(this.movementInput!=null)
             {
                 this.moveStrafing = this.movementInput.moveStrafe;

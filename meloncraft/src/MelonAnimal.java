@@ -332,7 +332,7 @@ public abstract class MelonAnimal extends EntityAgeable implements IAnimals
      */
     public boolean isBreedingItem(ItemStack par1ItemStack)
     {
-        return par1ItemStack.itemID == Item.wheat.itemID;
+        return par1ItemStack.itemID == MelonCraft.melStick.itemID;
     }
 
     /**

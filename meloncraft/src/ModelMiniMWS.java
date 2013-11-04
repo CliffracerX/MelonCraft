@@ -11,9 +11,12 @@
 
 package meloncraft.src;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.src.ModLoader;
 import net.minecraft.util.MathHelper;
 
 public class ModelMiniMWS extends ModelBiped
@@ -82,7 +85,16 @@ public class ModelMiniMWS extends ModelBiped
     bipedRightLeg.render(f5);
     bipedLeftLeg.render(f5);
     if(soldier.getStickStuff()==1)
-    stick.render(f5);
+    {
+    	stick.render(f5);
+    }
+    if(soldier.getArmor()>0)
+    {
+    	ModLoader.getMinecraftInstance().renderEngine.func_98187_b("/meloncraft/texes/bodArm1"+soldier.armortypes[soldier.getArmor()-1]+".png");
+    	GL11.glScalef(1.05F, 1.05F, 1.05F);
+    	GL11.glTranslatef(0, -0.05F, 0);
+    	bipedBody.render(f5);
+    }
     //moonstonemaceend.render(f5);
   }
   

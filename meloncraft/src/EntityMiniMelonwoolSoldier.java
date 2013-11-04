@@ -28,13 +28,13 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
 		private boolean neutral;
 		private boolean hostileToPlayers;
 		private String[] colors = {"rr", "rg", "rb", "gr", "gg", "gb", "br", "bg", "bb", "rw", "gw", "bw", "wr", "wg", "wb", "ww"};
-		String[] armortypes = {"NMW", "RMW", "GMW", "BMW", "MST"};
+		String[] armortypes = {"NMW", "RMW", "GMW", "BMW"};
 		public int armortype;
 		
         public EntityMiniMelonwoolSoldier(World world)
         {
                 super(world);
-                this.setSize(0.3F, 0.7F);
+                this.setSize(0.4F, 0.8F);
                 System.out.println("YAY, MELONWOOLSOLDIER");
         }
         
@@ -46,9 +46,9 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             this.setColor(par1NBTTagCompound.getInteger("Color"));
             this.neutral=par1NBTTagCompound.getBoolean("Neutral");
             this.hostileToPlayers=par1NBTTagCompound.getBoolean("HostileToPlayers");
-            this.armortypeHead=par1NBTTagCompound.getInteger("ArmorHead");
+            this.setArmor(par1NBTTagCompound.getInteger("ArmorHead"));
             this.armortype=par1NBTTagCompound.getInteger("Armor");
-            this.dataWatcher.updateObject(20, par1NBTTagCompound.getInteger("Armor"));
+            //this.dataWatcher.updateObject(20, par1NBTTagCompound.getInteger("Armor"));
         }
 
         /**
@@ -59,7 +59,7 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             super.writeEntityToNBT(par1NBTTagCompound);
             par1NBTTagCompound.setInteger("Item", this.getStickStuff());
             par1NBTTagCompound.setInteger("Attack", this.atk);
-            par1NBTTagCompound.setInteger("ArmorHead", this.armortypeHead);
+            par1NBTTagCompound.setInteger("ArmorHead", this.getArmor());
             par1NBTTagCompound.setInteger("Armor", this.armortype);
             par1NBTTagCompound.setBoolean("Neutral", this.neutral);
             par1NBTTagCompound.setBoolean("HostileToPlayers", this.hostileToPlayers);
@@ -135,7 +135,7 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             //	this.setCurrentItemOrArmor(2, new ItemStack(MelonCraft.NMWL));
             //	this.setCurrentItemOrArmor(1, new ItemStack(MelonCraft.NMWB));
             //}
-            this.dataWatcher.updateObject(15, this.getStickStuff());
+            //this.dataWatcher.updateObject(15, this.getStickStuff());
             //if(this.dataWatcher.getWatchableObjectInt(15)==1)
             //this.setCurrentItemOrArmor(0, new ItemStack(MelonCraft.melWoodPick));
             //if(this.dataWatcher.getWatchableObjectInt(15)==2)
@@ -292,8 +292,8 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             	{
             	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.NMWH)
             	{
-            		this.armortypeHead=MelonCraft.NMWH.itemID;
-            		this.armortype=0;
+            		this.setArmor(1);
+            		//this.armortype=1;
             		if(par1EntityPlayer.capabilities.isCreativeMode==false)
             		{
             		if(par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem].stackSize>1)
@@ -302,12 +302,13 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             		par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem]=null;
             		}
             	}
-            	if(par1EntityPlayer.getHeldItem()!= null)
+            	}
+        		if(par1EntityPlayer.getHeldItem()!= null)
             	{
             	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.RMWH)
             	{
-            		this.armortypeHead=MelonCraft.RMWH.itemID;
-            		this.armortype=1;
+            		this.setArmor(2);
+            		//this.armortype=1;
             		if(par1EntityPlayer.capabilities.isCreativeMode==false)
             		{
             		if(par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem].stackSize>1)
@@ -317,12 +318,12 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             		}
             	}
             	}
-            	if(par1EntityPlayer.getHeldItem()!= null)
+        		if(par1EntityPlayer.getHeldItem()!= null)
             	{
             	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.GMWH)
             	{
-            		this.armortypeHead=MelonCraft.GMWH.itemID;
-            		this.armortype=2;
+            		this.setArmor(3);
+            		//this.armortype=1;
             		if(par1EntityPlayer.capabilities.isCreativeMode==false)
             		{
             		if(par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem].stackSize>1)
@@ -332,12 +333,12 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             		}
             	}
             	}
-            	if(par1EntityPlayer.getHeldItem()!= null)
+        		if(par1EntityPlayer.getHeldItem()!= null)
             	{
             	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.BMWH)
             	{
-            		this.armortypeHead=MelonCraft.BMWH.itemID;
-            		this.armortype=3;
+            		this.setArmor(4);
+            		//this.armortype=1;
             		if(par1EntityPlayer.capabilities.isCreativeMode==false)
             		{
             		if(par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem].stackSize>1)
@@ -347,28 +348,39 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
             		}
             	}
             	}
-            	if(par1EntityPlayer.getHeldItem()!= null)
+        	}
+        	if(par1EntityPlayer.getHeldItem()==null)
+        	{
+        		if(this.stickStuff==1)
+        		{
+        		this.dropItem(MelonCraft.melStick.itemID, 1);
+        		this.setStickStuff(0);
+        		}
+        		if(this.armortypeHead==1)
+        		{
+            	this.dropItem(MelonCraft.NMWH.itemID, 1);
+            	this.setArmor(0);
+        		}
+            	if(this.armortypeHead==2)
             	{
-            	if(par1EntityPlayer.getHeldItem().getItem()==MelonCraft.MSTH)
-            	{
-            		this.armortypeHead=MelonCraft.MSTH.itemID;
-            		this.armortype=4;
-            		if(par1EntityPlayer.capabilities.isCreativeMode==false)
-            		{
-            		if(par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem].stackSize>1)
-            		par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem].stackSize--;
-            		else
-            		par1EntityPlayer.inventory.mainInventory[par1EntityPlayer.inventory.currentItem]=null;
-            		}
+               	this.dropItem(MelonCraft.RMWH.itemID, 1);
+               	this.setArmor(0);
             	}
-            	}
-            	this.dataWatcher.updateObject(20, this.armortype);
-            	}
+                if(this.armortypeHead==3)
+                {
+                this.dropItem(MelonCraft.GMWH.itemID, 1);
+               	this.setArmor(0);
+                }
+                if(this.armortypeHead==4)
+                {
+                this.dropItem(MelonCraft.BMWH.itemID, 1);
+               	this.setArmor(0);
+                }
         	}
         	return true;
         }
-        
-        /**
+
+		/**
          * Returns the amount of damage a mob should deal.
          */
         public int getAttackStrength(Entity par1Entity)
@@ -422,11 +434,20 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
 	    }
 
 		public int getStickStuff() {
-			return stickStuff;
+			return this.dataWatcher.getWatchableObjectInt(15);
 		}
 
 		public void setStickStuff(int stickStuff) {
 			this.dataWatcher.updateObject(15, stickStuff);
 			this.stickStuff = stickStuff;
+		}
+		
+		public int getArmor() {
+			return this.dataWatcher.getWatchableObjectInt(20);
+		}
+
+		public void setArmor(int armor) {
+			this.dataWatcher.updateObject(20, armor);
+			this.armortypeHead = armor;
 		}
 }

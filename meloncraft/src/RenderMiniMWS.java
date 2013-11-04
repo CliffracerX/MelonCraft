@@ -38,6 +38,11 @@ public class RenderMiniMWS extends RenderLiving
     {
         this(par1ModelBiped, par2, 1.0F);
     }
+    
+    public void loadTexture(String par1Str)
+    {
+        this.renderManager.renderEngine.func_98187_b(par1Str);
+    }
 
     public RenderMiniMWS(ModelBiped par1ModelBiped, float par2, float par3)
     {
@@ -168,12 +173,12 @@ public class RenderMiniMWS extends RenderLiving
         this.field_82423_g.aimedBow = this.field_82425_h.aimedBow = this.modelBipedMain.aimedBow = false;
         this.field_82423_g.isSneak = this.field_82425_h.isSneak = this.modelBipedMain.isSneak = false;
         this.field_82423_g.heldItemRight = this.field_82425_h.heldItemRight = this.modelBipedMain.heldItemRight = 0;
-        if(soldier.armortype!=0)
+        if(soldier.armortypeHead!=0)
         {
-        	GL11.glScalef(1.05F, 1.05F, 1.05F);
-        	this.loadTexture("/meloncraft/texes/bodArm1"+soldier.armortypes[soldier.armortype]+".png");
-        	ModelMiniMWS soldierModel = (ModelMiniMWS)this.modelBipedMain;
-        	soldierModel.bipedBody2.render(f6);
+        	//GL11.glScalef(1.05F, 1.05F, 1.05F);
+        	//this.loadTexture("/meloncraft/texes/bodArm1"+soldier.armortypes[soldier.armortype]+".png");
+        	//ModelMiniMWS soldierModel = (ModelMiniMWS)this.modelBipedMain;
+        	//soldierModel.bipedBody2.render(f6);
         	//GL11.glScalef(1, 1, 1);
         }
     }
