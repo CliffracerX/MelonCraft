@@ -498,7 +498,7 @@ public class EntityMiniMelonwoolSoldier extends EntityCreature
 	                if (this.getArmor()>0)
 	                {
 	                    //this.getCurrentItemOrArmor(4).damageItem(par2 * 4 + this.rand.nextInt(par2 * 2), this);
-	                    par2/=2;
+	                    par2-=1;
 	                }
 
 	                this.limbYaw = 1.5F;
