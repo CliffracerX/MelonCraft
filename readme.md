@@ -1,8 +1,8 @@
 ## Stuff ##
-Meloncraft for Minecraft 1.5.0.  Not all features are back yet.
+Meloncraft for Minecraft 1.6.4.  Not all features are back yet.
 
 ## Installing ##
-Add meloncraft folder and mods folder into your MCP's src/minecraft.  Make sure you have forge!
+Add cliffracerx folder and assets folder into your MCP's src/minecraft.  Make sure you have forge!
 
 ## Credits ##
 Mojang: Some reused Vanilla Minecraft code is in MelonCraft.
