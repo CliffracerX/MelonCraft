@@ -209,7 +209,7 @@ public class MelonBlockLeaves extends Block
      */
     public int quantityDropped(Random par1Random)
     {
-        return par1Random.nextInt(3) == 0 ? 1 : 0;
+        return par1Random.nextInt(1) == 0 ? 1 : 0;
     }
 
     /**
@@ -227,7 +227,7 @@ public class MelonBlockLeaves extends Block
     {
         if (!par1World.isRemote)
         {
-            int j1 = 20;
+            int j1 = 15;
 
             if ((par5 & 3) == 3)
             {
@@ -250,7 +250,7 @@ public class MelonBlockLeaves extends Block
                 this.dropBlockAsItem_do(par1World, par2, par3, par4, new ItemStack(k1, 1, this.damageDropped(par5)));
             }
 
-            j1 = 3;
+            j1 = 2;
 
             if ((par5 & 3) == 0 && par1World.rand.nextInt(j1) == 0)
             {
@@ -275,19 +275,6 @@ public class MelonBlockLeaves extends Block
     public boolean isOpaqueCube()
     {
         return false;
-    }
-
-    @SideOnly(Side.CLIENT)
-
-    /**
-     * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
-     */
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
-    {
-        par3List.add(new ItemStack(par1, 1, 0));
-        par3List.add(new ItemStack(par1, 1, 1));
-        par3List.add(new ItemStack(par1, 1, 2));
-        par3List.add(new ItemStack(par1, 1, 3));
     }
 
     /**

@@ -29,28 +29,28 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class MelonBiomeDecor extends BiomeDecorator
 {
-    protected WorldGenerator[] gens = new WorldGenerator[13];
+    protected WorldGenerator[] gens = new WorldGenerator[5];
     private WorldGenerator blahGen;
 
     public MelonBiomeDecor(BiomeGenBase par1BiomeGenBase)
     {
         super(par1BiomeGenBase);
         System.out.println("MelonBiomeDecor is GO!");
-        /*this.dirtGen = new MelonOreGen(MelonCraft.melonDirt.blockID, 32);
-        this.gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);
-        this.coalGen = new WorldGenMinable(Block.oreCoal.blockID, 16);
-        //this.ironGen = new MelonOreGen(MelonCraft.moonstoneOre.blockID, 8);
+        this.dirtGen = new MelonOreGen(MelonCraft.melonDirt.blockID, 32);
+        //this.gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);
+        //this.coalGen = new WorldGenMinable(Block.oreCoal.blockID, 16);
+        this.ironGen = new MelonOreGen(MelonCraft.moonstoneOre.blockID, 8);
         //this.goldGen = new WorldGenMinable(MelonCraft.plazmaOre.blockID, 4);
-        this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
-        this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
-        this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);*/
+        //this.redstoneGen = new WorldGenMinable(Block.oreRedstone.blockID, 7);
+        //this.diamondGen = new WorldGenMinable(Block.oreDiamond.blockID, 7);
+        //this.lapisGen = new WorldGenMinable(Block.oreLapis.blockID, 6);
     }
     
     public void decorate(World par1World, Random par2Random, int par3, int par4)
     {
         if(this.currentWorld!=null)
         {
-            System.out.println("ALERT: CurrentWorld exists.");
+            //System.out.println("ALERT: CurrentWorld exists.");
         }
         else
         {
@@ -71,20 +71,20 @@ public class MelonBiomeDecor extends BiomeDecorator
     {
         byte abyte0[] = new byte[32768];
         this.generateOres();
-        /*this.gens[0]=new WorldGenMelTree(true);
-        this.gens[1]=new WorldGenLakes(MelonCraft.melonjuice.blockID);
-        this.gens[2]=new WorldGenLakes(MelonCraft.magilava.blockID);
+        this.gens[0]=new WorldGenMelTree(true);
+        this.gens[1]=new MelonOreGen(MelonCraft.melonDirt.blockID, 32);
+        this.gens[2]=new MelonOreGen(MelonCraft.melonDirt.blockID, 32);
         this.gens[3]=new MelonOreGen(MelonCraft.melonDirt.blockID, 32);
         this.gens[4]=new MagistoneGen();
-        this.gens[5]=new WorldGenDyeTree(true);
-        this.gens[6]=new WorldGenLakes(MelonCraft.redML.blockID);
-        this.gens[7]=new WorldGenLakes(MelonCraft.greenMJ.blockID);
-        this.gens[8]=new WorldGenLakes(MelonCraft.greenML.blockID);
-        this.gens[9]=new WorldGenLakes(MelonCraft.blueMJ.blockID);
-        this.gens[10]=new WorldGenLakes(MelonCraft.blueML.blockID);
-        this.gens[11]=new MelonOreGen(MelonCraft.moonstoneOre.blockID, 32);
-        this.gens[12]=new BiomeGen(MelonCraft.frostyGrass.blockID, 128);
-        MelonCaveGen cave = new MelonCaveGen();*/
+        //this.gens[5]=new WorldGenDyeTree(true);
+        //this.gens[6]=new WorldGenLakes(MelonCraft.redML.blockID);
+        //this.gens[7]=new WorldGenLakes(MelonCraft.greenMJ.blockID);
+        //this.gens[8]=new WorldGenLakes(MelonCraft.greenML.blockID);
+        //this.gens[9]=new WorldGenLakes(MelonCraft.blueMJ.blockID);
+        //this.gens[10]=new WorldGenLakes(MelonCraft.blueML.blockID);
+        //this.gens[11]=new MelonOreGen(MelonCraft.moonstoneOre.blockID, 32);
+        //this.gens[12]=new BiomeGen(MelonCraft.frostyGrass.blockID, 128);
+        //MelonCaveGen cave = new MelonCaveGen();
         int i = 5;
         int j = 0;
         int k = 0;
@@ -93,7 +93,7 @@ public class MelonBiomeDecor extends BiomeDecorator
         for (j = 0; doGen && j < i; ++j)
         {
             k = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
-            l = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;/*
+            l = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
             WorldGenerator worldgenerator = this.gens[this.randomGenerator.nextInt(this.gens.length)];
             worldgenerator.setScale(1.0D, 1.0D, 1.0D);
             if(worldgenerator==this.gens[0])
@@ -120,7 +120,7 @@ public class MelonBiomeDecor extends BiomeDecorator
             if(this.randomGenerator.nextInt(8)==0)
             worldgenerator.generate(this.currentWorld, this.randomGenerator, k, this.currentWorld.getHeightValue(k, l), l);
             }
-            else if(worldgenerator==this.gens[5])
+            /*else if(worldgenerator==this.gens[5])
             {
             if(this.randomGenerator.nextInt(4)==0)
             worldgenerator.generate(this.currentWorld, this.randomGenerator, k, this.currentWorld.getHeightValue(k, l), l);
@@ -139,7 +139,7 @@ public class MelonBiomeDecor extends BiomeDecorator
             {
                 //cave.generate(currentWorld, k, l, abyte0);
             }
-            /*if (this.randomGenerator.nextInt(2) == 0 && doGen)
+            */if (this.randomGenerator.nextInt(2) == 0 && doGen)
             {
                 int i1 = k + this.randomGenerator.nextInt(16) + 8;
                 this.currentWorld.getClass();
@@ -148,14 +148,14 @@ public class MelonBiomeDecor extends BiomeDecorator
                 (new WorldGenLakes(MelonCraft.melonjuice.blockID)).generate(this.currentWorld, this.randomGenerator, i1, l4, i8);
             }
 
-            if (this.randomGenerator.nextInt(4) == 0 && doGen)
+            if (this.randomGenerator.nextInt(5) == 0 && doGen)
             {
                 int i1 = k + this.randomGenerator.nextInt(16) + 8;
                 this.currentWorld.getClass();
                 int l4 = this.randomGenerator.nextInt(128);
                 int i8 = l + this.randomGenerator.nextInt(16) + 8;
                 (new WorldGenLakes(MelonCraft.magilava.blockID)).generate(this.currentWorld, this.randomGenerator, i1, l4, i8);
-            }*/
+            }
         }
 
 //        if (this.chunk_X == 0 && this.chunk_Z == 0)
@@ -168,22 +168,22 @@ public class MelonBiomeDecor extends BiomeDecorator
     
     protected void generateOres()
     {
-        /*//MinecraftForge.ORE_GEN_BUS.post(new OreGenEvent.Pre(currentWorld, randomGenerator, chunk_X, chunk_Z));
+        //MinecraftForge.ORE_GEN_BUS.post(new OreGenEvent.Pre(currentWorld, randomGenerator, chunk_X, chunk_Z));
         if (TerrainGen.generateOre(currentWorld, randomGenerator, dirtGen, chunk_X, chunk_Z, DIRT))
         this.genStandardOre1(20, this.dirtGen, 0, 128);
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, gravelGen, chunk_X, chunk_Z, GRAVEL))
+        /*if (TerrainGen.generateOre(currentWorld, randomGenerator, gravelGen, chunk_X, chunk_Z, GRAVEL))
         this.genStandardOre1(10, this.gravelGen, 0, 128);
         if (TerrainGen.generateOre(currentWorld, randomGenerator, coalGen, chunk_X, chunk_Z, COAL))
-        this.genStandardOre1(20, this.coalGen, 0, 128);
+        this.genStandardOre1(20, this.coalGen, 0, 128);*/
         if (TerrainGen.generateOre(currentWorld, randomGenerator, ironGen, chunk_X, chunk_Z, IRON))
         {
         this.genStandardOre1(20, this.ironGen, 0, 64);
-        this.blahGen = new MelonOreGen(MelonCraft.plazmaOre.blockID, 7);
-        this.genStandardOre1(1, this.blahGen, 0, 64);
-        this.blahGen = new MelonOreGen(MelonCraft.bendyOre.blockID, 7);
-        this.genStandardOre1(8, this.blahGen, 0, 64);
+        //this.blahGen = new MelonOreGen(MelonCraft.plazmaOre.blockID, 7);
+        //this.genStandardOre1(1, this.blahGen, 0, 64);
+        //this.blahGen = new MelonOreGen(MelonCraft.bendyOre.blockID, 7);
+        //this.genStandardOre1(8, this.blahGen, 0, 64);
         }
-        if (TerrainGen.generateOre(currentWorld, randomGenerator, goldGen, chunk_X, chunk_Z, GOLD))
+        /*if (TerrainGen.generateOre(currentWorld, randomGenerator, goldGen, chunk_X, chunk_Z, GOLD))
         this.genStandardOre1(20, this.goldGen, 0, 64);
         if (TerrainGen.generateOre(currentWorld, randomGenerator, redstoneGen, chunk_X, chunk_Z, REDSTONE))
         this.genStandardOre1(8, this.redstoneGen, 0, 16);

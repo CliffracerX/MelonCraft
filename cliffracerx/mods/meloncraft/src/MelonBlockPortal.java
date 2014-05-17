@@ -26,6 +26,7 @@ public class MelonBlockPortal extends BlockBreakable
         this.setHardness(-1.0F);
         this.setStepSound(soundGlassFootstep);
         this.setLightValue(0.75F);
+        setTextureName("MelonCraft:" + "portal");
         this.setCreativeTab(MelonCraft.tab);
     }
     

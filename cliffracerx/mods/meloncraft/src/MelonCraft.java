@@ -1,17 +1,24 @@
 package cliffracerx.mods.meloncraft.src;
 
+import java.util.Arrays;
+import cliffracerx.mods.cliffiestaints.src.CustomArmor;
 import sanandreasp.mods.ClaySoldiersMod.registry.SoldierTeams;
 import morph.common.ability.AbilityHandler;
 import morph.common.ability.AbilityStep;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
 import net.minecraft.block.BlockStationary;
+import net.minecraft.block.StepSound;
+import net.minecraft.client.gui.GuiFlatPresets;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.FlatLayerInfo;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.DimensionManager;
@@ -29,6 +36,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -51,6 +59,11 @@ public class MelonCraft
     public static int melonplanksID = 1838;
     public static int melonleavesID = 1839;
     public static int melonsaplingID = 1840;
+    public static int meloncobbleID = 1841;
+    public static int melonjuiceID = 1842;
+    public static int magilavaID = 1843;
+    public static int melonBenchID = 1844;
+    public static int moonstoneOreID = 1845;
     public static Block melonDirt;
     public static Block melonStone;
     public static Block melonGrass;
@@ -60,6 +73,37 @@ public class MelonCraft
     public static Block melonplanks;
     public static Block melonleaves;
     public static Block melonsapling;
+    public static Block meloncobble;
+    public static Block melonjuice;
+    public static Block magilava;
+    public static Block melonBench;
+    public static Block moonstoneOre;
+    public static int melonstickID = 9801;
+    public static int melonwoodpickID = 9802;
+    public static int melonstonepickID = 9803;
+    public static int melonwoodaxeID = 9804;
+    public static int melonstoneaxeID = 9805;
+    public static int melonwoodshovelID = 9806;
+    public static int melonstoneshovelID = 9807;
+    public static int magiDustID = 9808;
+    public static int moonstoneIngotID = 9809;
+    public static int moonstoneshovelID = 9810;
+    public static int moonstoneaxeID = 9811;
+    public static int moonstonepickID = 9812;
+    public static Item melonstick;
+    public static Item melonwoodpick;
+    public static Item melonstonepick;
+    public static Item melonwoodaxe;
+    public static Item melonstoneaxe;
+    public static Item melonwoodshovel;
+    public static Item melonstoneshovel;
+    public static Item magiDust;
+    public static Item moonstoneIngot;
+    public static Item moonstoneshovel;
+    public static Item moonstoneaxe;
+    public static Item moonstonepick;
+    public static StepSound soundWaterFootstep = new MelonStepSound("liquid.swim", 1, 1);
+    public static StepSound soundLavaFootstep = new MelonStepSound("liquid.lavapop", 1, 1);
     
     @Instance("MelonCraft")
     public static MelonCraft instance;
@@ -67,7 +111,7 @@ public class MelonCraft
     @SidedProxy(clientSide = "cliffracerx.mods.meloncraft.src.ClientProxy",
             serverSide = "cliffracerx.mods.meloncraft.src.CommonProxy")
     public static CommonProxy proxy;
-    public static final BiomeGenBase biome = new MelonBiome(30);
+    public static BiomeGenBase biome;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -85,30 +129,47 @@ public class MelonCraft
         melonplanksID = config.get(Configuration.CATEGORY_BLOCK, "Melonplanks BlockID", 1838).getInt(1838);
         melonleavesID = config.get(Configuration.CATEGORY_BLOCK, "Melonleaves BlockID", 1839).getInt(1839);
         melonsaplingID = config.get(Configuration.CATEGORY_BLOCK, "Melonsapling BlockID", 1840).getInt(1840);
+        meloncobbleID = config.get(Configuration.CATEGORY_BLOCK, "Meloncobble BlockID", 1841).getInt(1841);
+        melonjuiceID = config.get(Configuration.CATEGORY_BLOCK, "Melonjuice BlockID", 1842).getInt(1842);
+        magilavaID = config.get(Configuration.CATEGORY_BLOCK, "Magilava BlockID", 1843).getInt(1843);
+        melonBenchID = config.get(Configuration.CATEGORY_BLOCK, "Melonbench BlockID", 1844).getInt(1844);
+        moonstoneOreID = config.get(Configuration.CATEGORY_BLOCK, "Moonstone ore BlockID", 1845).getInt(1845);
+        melonstickID = config.get(Configuration.CATEGORY_ITEM, "Melonstick ItemID", 9801).getInt(9801);
+        melonwoodpickID = config.get(Configuration.CATEGORY_ITEM, "Melonwood pickaxe ItemID", 9802).getInt(9802);
+        melonstonepickID = config.get(Configuration.CATEGORY_ITEM, "Melonstone pickaxe ItemID", 9803).getInt(9803);
+        melonwoodaxeID = config.get(Configuration.CATEGORY_ITEM, "Melonwood axe ItemID", 9804).getInt(9804);
+        melonstoneaxeID = config.get(Configuration.CATEGORY_ITEM, "Melonstone axe ItemID", 9805).getInt(9805);
+        melonwoodshovelID = config.get(Configuration.CATEGORY_ITEM, "Melonwood shovel ItemID", 9806).getInt(9806);
+        melonstoneshovelID = config.get(Configuration.CATEGORY_ITEM, "Melonstone shovel ItemID", 9807).getInt(9807);
+        magiDustID = config.get(Configuration.CATEGORY_ITEM, "Magidust ItemID", 9808).getInt(9808);
+        moonstoneIngotID = config.get(Configuration.CATEGORY_ITEM, "Moonstone ingot ItemID", 9809).getInt(9809);
         // saving the configuration to its file
         config.save();
     }
-    
+    //public void load(FMLInitializationEvent event)
     @EventHandler
     @SideOnly(Side.CLIENT)
-    public void load(FMLInitializationEvent event)
+    public void postInit(FMLPostInitializationEvent event)
     {
         ClientProxy.registerRenderers();
+        GuiFlatPresets.addPreset("Melondimension Superflat", melonGrass.blockID, biome, Arrays.asList(new String[] {"decoration"}), new FlatLayerInfo[] {new FlatLayerInfo(1, melonGrass.blockID), new FlatLayerInfo(2, melonDirt.blockID), new FlatLayerInfo(60, melonStone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID)});
+        GuiFlatPresets.addPreset("Melondimension Superflat Doomworld", magistone.blockID, biome, Arrays.asList(new String[] {"decoration"}), new FlatLayerInfo[] {new FlatLayerInfo(1, melonGrass.blockID), new FlatLayerInfo(2, melonDirt.blockID), new FlatLayerInfo(26, melonStone.blockID), new FlatLayerInfo(8, 0), new FlatLayerInfo(26, melonStone.blockID), new FlatLayerInfo(1, Block.bedrock.blockID)});
     }
     
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
+    public void load(FMLInitializationEvent event)
     {
-        //Registering the MelonDimension
+        //Registering various thingermabobs.
         DimensionManager.registerProviderType(-2, MelonWorldProvider.class, true);
         DimensionManager.registerDimension(-2, -2);
+        NetworkRegistry.instance().registerGuiHandler(this, new CommonProxy());
         //Actually initializing the blocks
         melonDirt = new MelonBlockNormal(melonDirtID,
                 Material.ground, "melonDirt").setHardness(0.25F)
                 .setStepSound(Block.soundGravelFootstep)
                 .setUnlocalizedName("melonDirt").setCreativeTab(tab);
-        melonStone = new MelonBlockNormal(melonStoneID,
-                Material.ground, "melonStone").setHardness(0.75F)
+        melonStone = new MelonBlockStone(melonStoneID,
+                Material.ground, "melonStone", 0, 0.75f).setHardness(0.75F)
                 .setStepSound(Block.soundStoneFootstep)
                 .setUnlocalizedName("melonStone").setCreativeTab(tab);
         melonGrass = new MelonBlockGrass(melonGrassID,
@@ -118,8 +179,8 @@ public class MelonCraft
         portal = new MelonBlockPortal(portalID).setHardness(-1F)
                 .setStepSound(Block.soundGlassFootstep)
                 .setUnlocalizedName("melonportal").setCreativeTab(tab);
-        magistone = new MelonBlockNormal(magistoneID,
-                Material.ground, "magistone").setHardness(0.75F)
+        magistone = new MelonBlockStone(magistoneID,
+                Material.ground, "magistone", 1, 0.75f).setHardness(0.75F)
                 .setStepSound(Block.soundGlassFootstep)
                 .setUnlocalizedName("magistone").setCreativeTab(tab).setLightValue(1.0f);
         melonlog = new MelonBlockNormal(melonlogID,
@@ -138,6 +199,39 @@ public class MelonCraft
                 Material.ground, "melonSapling", melonlog.blockID, melonleaves.blockID).setHardness(0.0F)
                 .setStepSound(Block.soundGrassFootstep)
                 .setUnlocalizedName("melonsapling").setCreativeTab(tab);
+        meloncobble = new MelonBlockStone(meloncobbleID,
+                Material.ground, "melonCobble", 0, 0.75f).setHardness(0.5F)
+                .setStepSound(Block.soundStoneFootstep)
+                .setUnlocalizedName("meloncobble").setCreativeTab(tab);
+        melonjuice = new MelonWateryBlock(melonjuiceID,
+                Material.ground, "melonjuice", false).setHardness(0.5F)
+                .setStepSound(soundWaterFootstep)
+                .setUnlocalizedName("melonjuice").setCreativeTab(tab);
+        magilava = new MelonWateryBlock(magilavaID,
+                Material.ground, "magilava", true).setHardness(0.5F)
+                .setStepSound(soundLavaFootstep)
+                .setUnlocalizedName("magilava").setCreativeTab(tab).setLightValue(1.0f);
+        melonBench = new MelonBench(melonBenchID,
+                Material.ground, "melonTable").setHardness(0.5F)
+                .setStepSound(Block.soundWoodFootstep)
+                .setUnlocalizedName("melonbench").setCreativeTab(tab);
+        moonstoneOre = new MelonBlockStone(moonstoneOreID,
+                Material.ground, "moonstoneOre", 1, 1.5f).setHardness(1.5F)
+                .setStepSound(Block.soundStoneFootstep)
+                .setUnlocalizedName("moonstoneOre").setCreativeTab(tab);
+        //Items
+        melonstick = new GenericMelonItem(melonstickID, "melonStick");
+        melonwoodpick = new MelonPickaxe(melonwoodpickID, "melonwoodPick", 0, 63, 1.5f);
+        melonstonepick = new MelonPickaxe(melonstonepickID, "melonstonePick", 1, 127, 3f);
+        melonwoodaxe = new MelonAxe(melonwoodaxeID, "woodAxe", 0, 63, 1.5f);
+        melonstoneaxe = new MelonAxe(melonstoneaxeID, "stoneAxe", 1, 127, 3f);
+        melonwoodshovel = new MelonShovel(melonwoodshovelID, "woodShov", 0, 63, 1.5f);
+        melonstoneshovel = new MelonShovel(melonstoneshovelID, "stoneShov", 1, 127, 3f);
+        magiDust = new GenericMelonItem(magiDustID, "magiDust");
+        moonstoneIngot = new GenericMelonItem(moonstoneIngotID, "moonstoneIngot");
+        moonstoneshovel = new MelonShovel(moonstoneshovelID, "moonShov", 2, 255, 4.5f);
+        moonstoneaxe = new MelonAxe(moonstoneaxeID, "moonAxe", 2, 255, 4.5f);
+        moonstonepick = new MelonPickaxe(moonstonepickID, "moonstonePick", 2, 255, 4.5f);
         //Block naming and registering
         LanguageRegistry.addName(melonDirt, "Melon Dirt");
         GameRegistry.registerBlock(melonDirt, "melonDirt");
@@ -157,7 +251,48 @@ public class MelonCraft
         GameRegistry.registerBlock(melonleaves, "melonleaves");
         LanguageRegistry.addName(melonsapling, "Melon Sapling");
         GameRegistry.registerBlock(melonsapling, "melonsapling");
+        LanguageRegistry.addName(meloncobble, "Melon Cobblestone");
+        GameRegistry.registerBlock(meloncobble, "meloncobble");
+        LanguageRegistry.addName(melonjuice, "Melon Juice");
+        GameRegistry.registerBlock(melonjuice, "melonjuice");
+        LanguageRegistry.addName(magilava, "Magilava");
+        GameRegistry.registerBlock(magilava, "magilava");
+        LanguageRegistry.addName(melonBench, "Melonbench");
+        GameRegistry.registerBlock(melonBench, "melonBench");
+        LanguageRegistry.addName(moonstoneOre, "Moonstone Ore");
+        GameRegistry.registerBlock(moonstoneOre, "moonstoneOre");
+        //Item naming
+        LanguageRegistry.addName(melonstick, "Melonwood stick");
+        LanguageRegistry.addName(melonwoodpick, "Melon-wood pick");
+        LanguageRegistry.addName(melonstonepick, "Melon-stone pick");
+        LanguageRegistry.addName(melonwoodaxe, "Melon-wood axe");
+        LanguageRegistry.addName(melonstoneaxe, "Melon-stone axe");
+        LanguageRegistry.addName(melonwoodshovel, "Melon-wood shovel");
+        LanguageRegistry.addName(melonstoneshovel, "Melon-stone shovel");
+        LanguageRegistry.addName(magiDust, "Magidust");
+        LanguageRegistry.addName(moonstoneIngot, "Moonstone Ingot");
+        LanguageRegistry.addName(moonstoneshovel, "Moonstone shovel");
+        LanguageRegistry.addName(moonstoneaxe, "Moonstone axe");
+        LanguageRegistry.addName(moonstonepick, "Moonstone pick");
         //Add crafting
         GameRegistry.addRecipe(new ItemStack(melonplanks, 4), "#", '#', melonlog);
+        GameRegistry.addRecipe(new ItemStack(melonstick, 4), "#", "#", '#', melonplanks);
+        GameRegistry.addRecipe(new ItemStack(meloncobble, 4), "#", '#', melonStone);
+        GameRegistry.addRecipe(new ItemStack(melonStone, 1), "##", "##", '#', meloncobble);
+        GameRegistry.addRecipe(new ItemStack(melonBench, 1), "##", "##", '#', melonplanks);
+        GameRegistry.addRecipe(new ItemStack(magistone, 1), "#", '#', magilava);
+        GameRegistry.addRecipe(new ItemStack(magiDust, 4), "#", '#', magistone);
+        GameRegistry.addRecipe(new ItemStack(magistone, 1), "##", "##", '#', magiDust);
+        GameRegistry.addRecipe(new ItemStack(magilava, 2), "#$", '#', magilava, '$', magistone);
+        GameRegistry.addRecipe(new ItemStack(moonstoneIngot, 1), "#", '#', moonstoneOre);
+        //Add biome
+        biome = new MelonBiome(30);
+    }
+
+    public static boolean openCustomGui(World par1World, int par2, int par3,
+            int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
+            float par8, float par9, int id) {
+        par5EntityPlayer.openGui(MelonCraft.instance, id, par1World, par2, par3, par4);
+        return true;
     }
 }

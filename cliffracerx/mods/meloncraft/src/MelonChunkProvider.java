@@ -406,22 +406,22 @@ public class MelonChunkProvider implements IChunkProvider
             (new BiomeGen(MelonCraft.frostyGrass.blockID, 128)).generate(worldObj, random, i1, l4, i8);
         }*/
 
-        if (random.nextInt(2) == 0)
+        if (random.nextInt(1) == 0)
         {
             int i1 = k + random.nextInt(16) + 8;
             worldObj.getClass();
             int l4 = random.nextInt(128);
             int i8 = l + random.nextInt(16) + 8;
-            //(new WorldGenLakes(MelonCraft.melonjuice.blockID)).generate(worldObj, random, i1, l4, i8);
+            (new WorldGenLakes(MelonCraft.melonjuice.blockID)).generate(worldObj, random, i1, l4, i8);
         }
 
-        if (random.nextInt(4) == 0)
+        if (random.nextInt(5) == 0)
         {
             int i1 = k + random.nextInt(16) + 8;
             worldObj.getClass();
             int l4 = random.nextInt(128);
             int i8 = l + random.nextInt(16) + 8;
-            //(new WorldGenLakes(MelonCraft.magilava.blockID)).generate(worldObj, random, i1, l4, i8);
+            (new WorldGenLakes(MelonCraft.magilava.blockID)).generate(worldObj, random, i1, l4, i8);
         }
 
         /*for (int k1 = 0; k1 < 8; k1++)
@@ -475,7 +475,7 @@ public class MelonChunkProvider implements IChunkProvider
             worldObj.getClass();
             int l9 = random.nextInt(64);
             int j14 = l + random.nextInt(16);
-            //(new MelonOreGen(MelonCraft.moonstoneOre.blockID, 8)).generate(worldObj, random, k6, l9, j14);
+            (new MelonOreGen(MelonCraft.moonstoneOre.blockID, 8, MelonCraft.melonStone.blockID)).generate(worldObj, random, k6, l9, j14);
         }
         
         for (int j3 = 0; j3 < 1; j3++)
@@ -678,7 +678,7 @@ public class MelonChunkProvider implements IChunkProvider
             //(new WorldGenCactus()).generate(worldObj, random, i20, k21, k22);
         }
 
-        /*for (int k17 = 0; k17 < 50; k17++)
+        for (int k17 = 0; k17 < 50; k17++)
         {
             int j20 = k + random.nextInt(16) + 8;
             worldObj.getClass();
@@ -694,7 +694,7 @@ public class MelonChunkProvider implements IChunkProvider
             int i22 = random.nextInt(random.nextInt(random.nextInt(112) + 8) + 8);
             int i23 = l + random.nextInt(16) + 8;
             (new WorldGenLiquids(MelonCraft.magilava.blockID)).generate(worldObj, random, k20, i22, i23);
-        }*/
+        }
 
         /*for (int i18 = 0; i18 < 16; i18++)
         {
