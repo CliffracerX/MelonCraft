@@ -1,8 +1,6 @@
 package cliffracerx.mods.meloncraft.src;
 
 import java.util.Arrays;
-import cliffracerx.mods.cliffiestaints.src.CustomArmor;
-import sanandreasp.mods.ClaySoldiersMod.registry.SoldierTeams;
 import morph.common.ability.AbilityHandler;
 import morph.common.ability.AbilityStep;
 import net.minecraft.block.Block;
@@ -64,6 +62,7 @@ public class MelonCraft
     public static int magilavaID = 1843;
     public static int melonBenchID = 1844;
     public static int moonstoneOreID = 1845;
+    public static int moonstoneBlockID = 1846;
     public static Block melonDirt;
     public static Block melonStone;
     public static Block melonGrass;
@@ -78,6 +77,7 @@ public class MelonCraft
     public static Block magilava;
     public static Block melonBench;
     public static Block moonstoneOre;
+    public static Block moonstoneBlock;
     public static int melonstickID = 9801;
     public static int melonwoodpickID = 9802;
     public static int melonstonepickID = 9803;
@@ -104,6 +104,7 @@ public class MelonCraft
     public static Item moonstonepick;
     public static StepSound soundWaterFootstep = new MelonStepSound("liquid.swim", 1, 1);
     public static StepSound soundLavaFootstep = new MelonStepSound("liquid.lavapop", 1, 1);
+    public static StepSound soundMachineFootstep = new MelonStepSoundMining("meloncraft:blocks.machine", 1, 1);
     
     @Instance("MelonCraft")
     public static MelonCraft instance;
@@ -134,6 +135,7 @@ public class MelonCraft
         magilavaID = config.get(Configuration.CATEGORY_BLOCK, "Magilava BlockID", 1843).getInt(1843);
         melonBenchID = config.get(Configuration.CATEGORY_BLOCK, "Melonbench BlockID", 1844).getInt(1844);
         moonstoneOreID = config.get(Configuration.CATEGORY_BLOCK, "Moonstone ore BlockID", 1845).getInt(1845);
+        moonstoneBlockID = config.get(Configuration.CATEGORY_BLOCK, "Moonstone block BlockID", 1846).getInt(1846);
         melonstickID = config.get(Configuration.CATEGORY_ITEM, "Melonstick ItemID", 9801).getInt(9801);
         melonwoodpickID = config.get(Configuration.CATEGORY_ITEM, "Melonwood pickaxe ItemID", 9802).getInt(9802);
         melonstonepickID = config.get(Configuration.CATEGORY_ITEM, "Melonstone pickaxe ItemID", 9803).getInt(9803);
@@ -219,6 +221,10 @@ public class MelonCraft
                 Material.ground, "moonstoneOre", 1, 1.5f).setHardness(1.5F)
                 .setStepSound(Block.soundStoneFootstep)
                 .setUnlocalizedName("moonstoneOre").setCreativeTab(tab);
+        moonstoneBlock = new MelonBlockStone(moonstoneBlockID,
+                Material.ground, "moonstoneBricks", 1, 1.5f).setHardness(1.5F)
+                .setStepSound(soundMachineFootstep)
+                .setUnlocalizedName("moonstoneBlock").setCreativeTab(tab);
         //Items
         melonstick = new GenericMelonItem(melonstickID, "melonStick");
         melonwoodpick = new MelonPickaxe(melonwoodpickID, "melonwoodPick", 0, 63, 1.5f);
@@ -261,6 +267,8 @@ public class MelonCraft
         GameRegistry.registerBlock(melonBench, "melonBench");
         LanguageRegistry.addName(moonstoneOre, "Moonstone Ore");
         GameRegistry.registerBlock(moonstoneOre, "moonstoneOre");
+        LanguageRegistry.addName(moonstoneBlock, "Moonstone Bricks");
+        GameRegistry.registerBlock(moonstoneBlock, "moonstoneblock");
         //Item naming
         LanguageRegistry.addName(melonstick, "Melonwood stick");
         LanguageRegistry.addName(melonwoodpick, "Melon-wood pick");
@@ -287,6 +295,8 @@ public class MelonCraft
         GameRegistry.addRecipe(new ItemStack(moonstoneIngot, 1), "#", '#', moonstoneOre);
         //Add biome
         biome = new MelonBiome(30);
+        //Event handler
+        MinecraftForge.EVENT_BUS.register(new MelonEventHandler());
     }
 
     public static boolean openCustomGui(World par1World, int par2, int par3,

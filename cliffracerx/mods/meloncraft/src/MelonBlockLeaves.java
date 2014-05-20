@@ -244,7 +244,7 @@ public class MelonBlockLeaves extends Block
                 }
             }
 
-            if (par1World.rand.nextInt(j1) == 0)
+            if (par1World.rand.nextInt(12) == 0)
             {
                 int k1 = this.idDropped(par5, par1World.rand, par7);
                 this.dropBlockAsItem_do(par1World, par2, par3, par4, new ItemStack(k1, 1, this.damageDropped(par5)));

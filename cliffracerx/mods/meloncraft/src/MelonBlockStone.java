@@ -31,6 +31,8 @@ public class MelonBlockStone extends Block
             MelonPickaxe pick =(MelonPickaxe) player.getHeldItem().getItem();
             if(pick.tier>=this.tr)
             this.setHardness(this.hard);
+            else
+            this.setBlockUnbreakable();
         }
         else
         this.setBlockUnbreakable();

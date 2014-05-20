@@ -56,13 +56,11 @@ public class MelonEventHandler
     @ForgeSubscribe
     public void onSoundLoad(SoundLoadEvent event)
     {
+        System.out.println("Initializing sounds.");
         for(int i = 1; i <= 4; i++)
         {
-            /*event.manager.soundPoolSounds.addSound("cliffiestaints:splut" + i + ".ogg");
-            event.manager.soundPoolSounds.addSound("cliffiestaints:thunk" + i + ".ogg");
-            event.manager.soundPoolSounds.addSound("cliffiestaints:woosh" + i + ".ogg");
-            event.manager.soundPoolSounds.addSound("cliffiestaints:zap" + i + ".ogg");
-            event.manager.soundPoolSounds.addSound("cliffiestaints:splurg" + i + ".ogg");*/
+            event.manager.soundPoolSounds.addSound("meloncraft:blocks/machinewalk" + i + ".ogg");
+            event.manager.soundPoolSounds.addSound("meloncraft:blocks/machinemine" + i + ".ogg");
         }
     }
 }
