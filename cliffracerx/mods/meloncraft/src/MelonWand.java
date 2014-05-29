@@ -67,6 +67,8 @@ public class MelonWand extends Item
         {
             par1ItemStack.setItemDamage(par1ItemStack.getItemDamage()-rechargeSpeed);
             par3World.playSoundAtEntity(par2EntityPlayer, "meloncraft:items.wandcharge", 0.5F, 1f);
+            if(par1ItemStack.getItemDamage()<1)
+                par1ItemStack.setItemDamage(1);
             return false;
         }
         else
