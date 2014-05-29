@@ -6,8 +6,14 @@ Add cliffracerx folder and assets folder into your MCP's src/minecraft.  Make su
 
 ## Credits ##
 Mojang: Some reused Vanilla Minecraft code is in MelonCraft.
+
 Crux_f from the coconut legion on youtube: Friend of mine, did 99% of the textures here.
-Jimmy04Creeper: I used some of his dimension tutorial code: https://github.com/Jimmy04Creeper/Tutorial-GutHub
+
+Jimmy04Creeper: I used some of their dimension tutorial code: https://github.com/Jimmy04Creeper/Tutorial-GutHub
+
+senpaisubaraki: I used their 3d item tutorial:
+http://www.minecraftforum.net/topic/2001807-172how-to-code-custom-3d-armor-models-3d-weapons-or-items-tutorial-by-senpaisubaraki/
+
 There's probably more I'm forgetting.
 
 ## License ##
