@@ -31,9 +31,9 @@ public class MelonWandRenderer implements IItemRenderer {
 			GL11.glPushMatrix(); //start gl rendering for this section
 			scale = 0.85F;
             GL11.glScalef(scale, scale, scale);
-			GL11.glRotatef(0F, 1.0f, 0.0f, 0.0f);	   //rotate 0 ° on X axis
-			GL11.glRotatef(-5F, 0.0f, 1.0f, 0.0f);	  // rotate -5 ° on Y axis
-			GL11.glRotatef(-150F, 0.0f, 0.0f, 1.0f);  // rotate -150 ° on Z axis
+			GL11.glRotatef(0F, 1.0f, 0.0f, 0.0f);
+			GL11.glRotatef(-5F, 0.0f, 1.0f, 0.0f);
+			GL11.glRotatef(-150F, 0.0f, 0.0f, 1.0f);
 			GL11.glTranslatef(-0.8F, 0.9F-temp, -0.1F);	//translate model to fit in the hand of the player
 			wandmodel.render((Entity) data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
 					0.0625F, mc, wand);
