@@ -30,6 +30,7 @@ public class MelonAxe extends Item
         this.dura=durability;
         this.speed=speed;
         this.setMaxDamage(this.dura);
+        this.setMaxStackSize(1);
     }
 
     @Override

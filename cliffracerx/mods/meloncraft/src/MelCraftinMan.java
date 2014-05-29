@@ -79,6 +79,11 @@ public class MelCraftinMan
         this.addRecipe(new ItemStack(MelonCraft.melonSeedBlock, 1), new Object[] {"###", "###", "###", '#', Item.melonSeeds});*/
         this.addRecipe(new ItemStack(MelonCraft.moonstoneBlock, 1), new Object[] {"###", "###", "###", '#', MelonCraft.moonstoneIngot});
         this.addRecipe(new ItemStack(MelonCraft.moonstoneIngot, 9), new Object[] {"#", '#', MelonCraft.moonstoneBlock});
+        this.addRecipe(new ItemStack(MelonCraft.moonstonecap, 1), new Object[] {"###", "# #", "   ", '#', MelonCraft.moonstoneIngot});
+        this.addRecipe(new ItemStack(MelonCraft.melonwoodwandcore, 1), new Object[] {" $ ", "$#$", " $ ", '#', MelonCraft.melonplanks, '$', MelonCraft.melonstick});
+        this.addRecipe(new ItemStack(MelonCraft.fireFocus, 1), new Object[] {" $ ", "$#$", " $ ", '#', MelonCraft.magilava, '$', MelonCraft.moonstoneIngot});
+        this.addRecipe(new ItemStack(MelonCraft.iceFocus, 1), new Object[] {" $ ", "$#$", " $ ", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.moonstoneIngot});
+        this.addRecipe(new ItemStack(MelonCraft.moonstoneCappedWoodenWand, 1, 101), new Object[] {"$  ", " # ", "  $", '#', MelonCraft.melonwoodwandcore, '$', MelonCraft.moonstonecap});
         this.addRecipe(new ItemStack(Block.melon, 1), new Object[] {"###", "###", "###", '#', Item.melon});
         /*this.addRecipe(new ItemStack(MelonCraft.wwminimws, 1), new Object[] {"X##", '#', MelonCraft.normalMW, 'X', MelonCraft.magidust});
         this.addRecipe(new ItemStack(MelonCraft.wrminimws, 1), new Object[] {"X##", '#', MelonCraft.normalMW, 'X', MelonCraft.redMD});

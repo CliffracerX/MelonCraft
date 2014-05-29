@@ -62,5 +62,8 @@ public class MelonEventHandler
             event.manager.soundPoolSounds.addSound("meloncraft:blocks/machinewalk" + i + ".ogg");
             event.manager.soundPoolSounds.addSound("meloncraft:blocks/machinemine" + i + ".ogg");
         }
+        event.manager.soundPoolSounds.addSound("meloncraft:items/wandcharge" + ".ogg");
+        event.manager.soundPoolSounds.addSound("meloncraft:items/firefocus" + ".ogg");
+        event.manager.soundPoolSounds.addSound("meloncraft:items/icefocus" + ".ogg");
     }
 }

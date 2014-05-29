@@ -90,6 +90,16 @@ public class MelonCraft
     public static int moonstoneshovelID = 9810;
     public static int moonstoneaxeID = 9811;
     public static int moonstonepickID = 9812;
+    public static int moonstoneCappedWoodenWandID = 9813;
+    public static int moonstoneCappedWoodenWandFireFocusID = 9814;
+    public static int moonstoneCappedWoodenWandIceFocusID = 9815;
+    public static int limemagicappedChargedWandID = 9816;
+    public static int limemagicappedChargedWandFireFocusID = 9817;
+    public static int limemagicappedChargedWandIceFocusID = 9818;
+    public static int fireFocusID = 9819;
+    public static int melonwoodwandcoreID = 9820;
+    public static int moonstonecapID = 9821;
+    public static int iceFocusID = 9822;
     public static Item melonstick;
     public static Item melonwoodpick;
     public static Item melonstonepick;
@@ -102,6 +112,16 @@ public class MelonCraft
     public static Item moonstoneshovel;
     public static Item moonstoneaxe;
     public static Item moonstonepick;
+    public static Item moonstoneCappedWoodenWand;
+    public static Item moonstoneCappedWoodenWandFireFocus;
+    public static Item moonstoneCappedWoodenWandIceFocus;
+    public static Item limemagicappedChargedWand;
+    public static Item limemagicappedChargedWandFireFocus;
+    public static Item limemagicappedChargedWandIceFocus;
+    public static Item fireFocus;
+    public static Item melonwoodwandcore;
+    public static Item moonstonecap;
+    public static Item iceFocus;
     public static StepSound soundWaterFootstep = new MelonStepSound("liquid.swim", 1, 1);
     public static StepSound soundLavaFootstep = new MelonStepSound("liquid.lavapop", 1, 1);
     public static StepSound soundMachineFootstep = new MelonStepSoundMining("meloncraft:blocks.machine", 1, 1);
@@ -145,6 +165,19 @@ public class MelonCraft
         melonstoneshovelID = config.get(Configuration.CATEGORY_ITEM, "Melonstone shovel ItemID", 9807).getInt(9807);
         magiDustID = config.get(Configuration.CATEGORY_ITEM, "Magidust ItemID", 9808).getInt(9808);
         moonstoneIngotID = config.get(Configuration.CATEGORY_ITEM, "Moonstone ingot ItemID", 9809).getInt(9809);
+        moonstoneshovelID = config.get(Configuration.CATEGORY_ITEM, "Moonstone shovel ItemID", 9810).getInt(9810);
+        moonstoneaxeID = config.get(Configuration.CATEGORY_ITEM, "Moonstone axe ItemID", 9811).getInt(9811);
+        moonstonepickID = config.get(Configuration.CATEGORY_ITEM, "Moonstone pick ItemID", 9812).getInt(9812);
+        moonstoneCappedWoodenWandID = config.get(Configuration.CATEGORY_ITEM, "Moonstone capped melonwood wand ItemID", 9813).getInt(9813);
+        moonstoneCappedWoodenWandFireFocusID = config.get(Configuration.CATEGORY_ITEM, "Moonstone capped melonwood wand with a fire focus ItemID", 9814).getInt(9814);
+        moonstoneCappedWoodenWandIceFocusID = config.get(Configuration.CATEGORY_ITEM, "Moonstone capped melonwood wand with a ice focus ItemID", 9815).getInt(9815);
+        limemagicappedChargedWandID = config.get(Configuration.CATEGORY_ITEM, "Lime magi-capped charged moonstone wand ItemID", 9816).getInt(9816);
+        limemagicappedChargedWandFireFocusID = config.get(Configuration.CATEGORY_ITEM, "Lime magi-capped charged moonstone wand with a fire focus ItemID", 9817).getInt(9817);
+        limemagicappedChargedWandIceFocusID = config.get(Configuration.CATEGORY_ITEM, "Lime magi-capped charged moonstone wand with a ice focus ItemID", 9818).getInt(9818);
+        fireFocusID = config.get(Configuration.CATEGORY_ITEM, "Fire Focus ItemID", 9819).getInt(9819);
+        melonwoodwandcoreID = config.get(Configuration.CATEGORY_ITEM, "Melonwood wand core ItemID", 9820).getInt(9820);
+        moonstonecapID = config.get(Configuration.CATEGORY_ITEM, "Moonstone wand cap ItemID", 9821).getInt(9821);
+        iceFocusID = config.get(Configuration.CATEGORY_ITEM, "Ice Focus ItemID", 9822).getInt(9822);
         // saving the configuration to its file
         config.save();
     }
@@ -238,6 +271,16 @@ public class MelonCraft
         moonstoneshovel = new MelonShovel(moonstoneshovelID, "moonShov", 2, 255, 4.5f);
         moonstoneaxe = new MelonAxe(moonstoneaxeID, "moonAxe", 2, 255, 4.5f);
         moonstonepick = new MelonPickaxe(moonstonepickID, "moonstonePick", 2, 255, 4.5f);
+        moonstoneCappedWoodenWand = new MelonWand(moonstoneCappedWoodenWandID, "moonstoneCappedWoodenWand", 100, "wood", "moonstone", "blank", 1);
+        moonstoneCappedWoodenWandFireFocus = new MelonWand(moonstoneCappedWoodenWandFireFocusID, "moonstoneCappedWoodenWandFireFocus", 100, "wood", "moonstone", "fire", 1);
+        moonstoneCappedWoodenWandIceFocus = new MelonWand(moonstoneCappedWoodenWandIceFocusID, "moonstoneCappedWoodenWandIceFocus", 100, "wood", "moonstone", "ice", 1);
+        limemagicappedChargedWand = new MelonWand(limemagicappedChargedWandID, "limemagicappedChargedWand", 450, "chargedmoonstone", "limemagi", "blank", 5);
+        limemagicappedChargedWandFireFocus = new MelonWand(limemagicappedChargedWandFireFocusID, "limemagicappedChargedWandFireFocus", 450, "chargedmoonstone", "limemagi", "fire", 5);
+        limemagicappedChargedWandIceFocus = new MelonWand(limemagicappedChargedWandIceFocusID, "limemagicappedChargedWandIceFocus", 450, "chargedmoonstone", "limemagi", "ice", 5);
+        fireFocus = new GenericMelonItem(fireFocusID, "fireFocus");
+        melonwoodwandcore = new GenericMelonItem(melonwoodwandcoreID, "melonwoodwandcore");
+        moonstonecap = new GenericMelonItem(moonstonecapID, "moonstonecap");
+        iceFocus = new GenericMelonItem(iceFocusID, "iceFocus");
         //Block naming and registering
         LanguageRegistry.addName(melonDirt, "Melon Dirt");
         GameRegistry.registerBlock(melonDirt, "melonDirt");
@@ -282,6 +325,16 @@ public class MelonCraft
         LanguageRegistry.addName(moonstoneshovel, "Moonstone shovel");
         LanguageRegistry.addName(moonstoneaxe, "Moonstone axe");
         LanguageRegistry.addName(moonstonepick, "Moonstone pick");
+        LanguageRegistry.addName(moonstoneCappedWoodenWand, "Moonstone-capped wooden wand");
+        LanguageRegistry.addName(moonstoneCappedWoodenWandFireFocus, "Moonstone-capped wooden wand + Fire Foci");
+        LanguageRegistry.addName(moonstoneCappedWoodenWandIceFocus, "Moonstone-capped wooden wand + Ice Foci");
+        LanguageRegistry.addName(limemagicappedChargedWand, "Lime Magi-capped charged moonstone wand");
+        LanguageRegistry.addName(limemagicappedChargedWandFireFocus, "Lime Magi-capped charged moonstone wand + Fire Foci");
+        LanguageRegistry.addName(limemagicappedChargedWandIceFocus, "Lime Magi-capped charged moonstone wand + Ice Foci");
+        LanguageRegistry.addName(fireFocus, "Fire wand focus");
+        LanguageRegistry.addName(iceFocus, "Ice wand focus");
+        LanguageRegistry.addName(moonstonecap, "Moonstone wand cap");
+        LanguageRegistry.addName(melonwoodwandcore, "Melonwood wand core");
         //Add crafting
         GameRegistry.addRecipe(new ItemStack(melonplanks, 4), "#", '#', melonlog);
         GameRegistry.addRecipe(new ItemStack(melonstick, 4), "#", "#", '#', melonplanks);
@@ -293,6 +346,7 @@ public class MelonCraft
         GameRegistry.addRecipe(new ItemStack(magistone, 1), "##", "##", '#', magiDust);
         GameRegistry.addRecipe(new ItemStack(magilava, 2), "#$", '#', magilava, '$', magistone);
         GameRegistry.addRecipe(new ItemStack(moonstoneIngot, 1), "#", '#', moonstoneOre);
+        GameRegistry.addRecipe(new ItemStack(portal, 2), "###", "#$#", "###", '#', Block.melon, '$', Item.ingotIron);
         //Add biome
         biome = new MelonBiome(30);
         //Event handler
