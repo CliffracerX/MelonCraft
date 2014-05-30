@@ -1,8 +1,12 @@
 package cliffracerx.mods.meloncraft.src;
 
+import com.google.common.collect.Multimap;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.entity.projectile.EntitySmallFireball;
@@ -13,6 +17,9 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -26,13 +33,15 @@ public class MelonWand extends Item
     String captype;
     String focustype;
     int rechargeSpeed;
+    double damageToDo;
 
-    public MelonWand(int id, String tex, int storage, String coretype, String captype, String focustype, int rSpeed)
+    public MelonWand(int id, String tex, int storage, String coretype, String captype, String focustype, int rSpeed, double damageToDo)
     {
         super(id);
         this.setUnlocalizedName(tex);
         this.setTextureName("MelonCraft:"+tex);
         this.texture=tex;
+        this.damageToDo=damageToDo;
         this.manastorage=storage;
         this.coretype=coretype;
         this.captype=captype;
@@ -63,7 +72,7 @@ public class MelonWand extends Item
         //super.onItemUse(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
         par2EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
         int i1 = par3World.getBlockId(par4, par5, par6);
-        if(i1==MelonCraft.magistoneID && par1ItemStack.getItemDamage()>1)
+        if((i1==MelonCraft.magistoneID || i1==MelonCraft.redMGSTID || i1==MelonCraft.orangeMGSTID || i1==MelonCraft.yellowMGSTID || i1==MelonCraft.limeMGSTID || i1==MelonCraft.greenMGSTID || i1==MelonCraft.cyanMGSTID || i1==MelonCraft.blueMGSTID || i1==MelonCraft.purpleMGSTID) && par1ItemStack.getItemDamage()>1)
         {
             par1ItemStack.setItemDamage(par1ItemStack.getItemDamage()-rechargeSpeed);
             par3World.playSoundAtEntity(par2EntityPlayer, "meloncraft:items.wandcharge", 0.5F, 1f);
@@ -124,6 +133,23 @@ public class MelonWand extends Item
         }
     }
     
+    public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase)
+    {
+        if(this.focustype=="fire" && par1ItemStack.getItemDamage()<this.manastorage+1)
+        {
+        par1ItemStack.damageItem(1, par3EntityLivingBase);
+        par2EntityLivingBase.setFire(5);
+        par2EntityLivingBase.attackEntityFrom(DamageSource.onFire, 2);
+        }
+        else if(this.focustype=="ice" && par1ItemStack.getItemDamage()<this.manastorage+1)
+        {
+        par1ItemStack.damageItem(1, par3EntityLivingBase);
+        par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.confusion.id, 5000, 1, true));
+        par2EntityLivingBase.attackEntityFrom(MelonCraft.freezeSource, 2);
+        }
+        return true;
+    }
+    
     public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         return par1ItemStack;
@@ -135,6 +161,13 @@ public class MelonWand extends Item
     public int getMaxItemUseDuration(ItemStack par1ItemStack)
     {
         return 72000;
+    }
+    
+    public Multimap getItemAttributeModifiers()
+    {
+        Multimap multimap = super.getItemAttributeModifiers();
+        multimap.put(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName(), new AttributeModifier(field_111210_e, "Weapon modifier", (double)this.damageToDo, 0));
+        return multimap;
     }
 
     /**

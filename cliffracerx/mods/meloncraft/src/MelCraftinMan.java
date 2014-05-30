@@ -84,6 +84,14 @@ public class MelCraftinMan
         this.addRecipe(new ItemStack(MelonCraft.fireFocus, 1), new Object[] {" $ ", "$#$", " $ ", '#', MelonCraft.magilava, '$', MelonCraft.moonstoneIngot});
         this.addRecipe(new ItemStack(MelonCraft.iceFocus, 1), new Object[] {" $ ", "$#$", " $ ", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.moonstoneIngot});
         this.addRecipe(new ItemStack(MelonCraft.moonstoneCappedWoodenWand, 1, 101), new Object[] {"$  ", " # ", "  $", '#', MelonCraft.melonwoodwandcore, '$', MelonCraft.moonstonecap});
+        this.addRecipe(new ItemStack(MelonCraft.redmagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.redMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.orangemagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.orangeMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.yellowmagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.yellowMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.limemagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.limeMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.greenmagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.greenMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.cyanmagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.cyanMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.bluemagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.blueMGST, '@', MelonCraft.magistone});
+        this.addRecipe(new ItemStack(MelonCraft.purplemagicappedChargedWand, 1, 451), new Object[] {"$@ ", "@#@", " @$", '#', MelonCraft.moonstoneBlock, '$', MelonCraft.purpleMGST, '@', MelonCraft.magistone});
         this.addRecipe(new ItemStack(Block.melon, 1), new Object[] {"###", "###", "###", '#', Item.melon});
         /*this.addRecipe(new ItemStack(MelonCraft.wwminimws, 1), new Object[] {"X##", '#', MelonCraft.normalMW, 'X', MelonCraft.magidust});
         this.addRecipe(new ItemStack(MelonCraft.wrminimws, 1), new Object[] {"X##", '#', MelonCraft.normalMW, 'X', MelonCraft.redMD});
