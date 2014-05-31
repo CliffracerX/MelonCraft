@@ -72,6 +72,16 @@ public class MelonCraft
     public static int cyanMGSTID = 1852;
     public static int blueMGSTID = 1853;
     public static int purpleMGSTID = 1854;
+    public static int redMWID = 1855;
+    public static int orangeMWID = 1856;
+    public static int yellowMWID = 1857;
+    public static int limeMWID = 1858;
+    public static int greenMWID = 1859;
+    public static int cyanMWID = 1860;
+    public static int blueMWID = 1861;
+    public static int purpleMWID = 1862;
+    public static int greyMWID = 1863;
+    public static int normalMWID = 1864;
     public static Block melonDirt;
     public static Block melonStone;
     public static Block melonGrass;
@@ -95,6 +105,16 @@ public class MelonCraft
     public static Block cyanMGST;
     public static Block blueMGST;
     public static Block purpleMGST;
+    public static Block redMW;
+    public static Block orangeMW;
+    public static Block yellowMW;
+    public static Block limeMW;
+    public static Block greenMW;
+    public static Block cyanMW;
+    public static Block blueMW;
+    public static Block purpleMW;
+    public static Block greyMW;
+    public static Block normalMW;
     public static int melonstickID = 9801;
     public static int melonwoodpickID = 9802;
     public static int melonstonepickID = 9803;
@@ -224,6 +244,16 @@ public class MelonCraft
         cyanMGSTID = config.get(Configuration.CATEGORY_BLOCK, "Cyan magistone BlockID", 1852).getInt(1852);
         blueMGSTID = config.get(Configuration.CATEGORY_BLOCK, "Blue magistone BlockID", 1853).getInt(1853);
         purpleMGSTID = config.get(Configuration.CATEGORY_BLOCK, "Purple magistone BlockID", 1854).getInt(1854);
+        redMWID = config.get(Configuration.CATEGORY_BLOCK, "Red melonwool BlockID", 1855).getInt(1855);
+        orangeMWID = config.get(Configuration.CATEGORY_BLOCK, "Orange melonwool BlockID", 1856).getInt(1856);
+        yellowMWID = config.get(Configuration.CATEGORY_BLOCK, "Yellow melonwool BlockID", 1857).getInt(1857);
+        limeMWID = config.get(Configuration.CATEGORY_BLOCK, "Lime melonwool BlockID", 1858).getInt(1858);
+        greenMWID = config.get(Configuration.CATEGORY_BLOCK, "Green melonwool BlockID", 1859).getInt(1859);
+        cyanMWID = config.get(Configuration.CATEGORY_BLOCK, "Cyan melonwool BlockID", 1860).getInt(1860);
+        blueMWID = config.get(Configuration.CATEGORY_BLOCK, "Blue melonwool BlockID", 1861).getInt(1861);
+        purpleMWID = config.get(Configuration.CATEGORY_BLOCK, "Purple melonwool BlockID", 1862).getInt(1862);
+        greyMWID = config.get(Configuration.CATEGORY_BLOCK, "Grey melonwool BlockID", 1863).getInt(1863);
+        normalMWID = config.get(Configuration.CATEGORY_BLOCK, "Melonwool BlockID", 1864).getInt(1864);
         melonstickID = config.get(Configuration.CATEGORY_ITEM, "Melonstick ItemID", 9801).getInt(9801);
         melonwoodpickID = config.get(Configuration.CATEGORY_ITEM, "Melonwood pickaxe ItemID", 9802).getInt(9802);
         melonstonepickID = config.get(Configuration.CATEGORY_ITEM, "Melonstone pickaxe ItemID", 9803).getInt(9803);
@@ -379,6 +409,46 @@ public class MelonCraft
                 Material.ground, "purpleMGST", 1, 0.75f).setHardness(0.75F)
                 .setStepSound(Block.soundGlassFootstep)
                 .setUnlocalizedName("purpleMGST").setCreativeTab(tab).setLightValue(1.0f);
+        redMW = new MelonBlockNormal(redMWID,
+                Material.ground, "redMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("redMW").setCreativeTab(tab);
+        orangeMW = new MelonBlockNormal(orangeMWID,
+                Material.ground, "orangeMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("orangeMW").setCreativeTab(tab);
+        yellowMW = new MelonBlockNormal(yellowMWID,
+                Material.ground, "yellowMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("yellowMW").setCreativeTab(tab);
+        limeMW = new MelonBlockNormal(limeMWID,
+                Material.ground, "limeMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("limeMW").setCreativeTab(tab);
+        greenMW = new MelonBlockNormal(greenMWID,
+                Material.ground, "greenMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("greenMW").setCreativeTab(tab);
+        cyanMW = new MelonBlockNormal(cyanMWID,
+                Material.ground, "cyanMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("cyanMW").setCreativeTab(tab);
+        blueMW = new MelonBlockNormal(blueMWID,
+                Material.ground, "blueMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("blueMW").setCreativeTab(tab);
+        purpleMW = new MelonBlockNormal(purpleMWID,
+                Material.ground, "purpleMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("purpleMW").setCreativeTab(tab);
+        greyMW = new MelonBlockNormal(greyMWID,
+                Material.ground, "greyMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("greyMW").setCreativeTab(tab);
+        normalMW = new MelonBlockNormal(normalMWID,
+                Material.ground, "normalMW").setHardness(0.25f)
+                .setStepSound(Block.soundSnowFootstep)
+                .setUnlocalizedName("normalMW").setCreativeTab(tab);
         //Items
         melonstick = new GenericMelonItem(melonstickID, "melonStick");
         melonwoodpick = new MelonPickaxe(melonwoodpickID, "melonwoodPick", 0, 63, 1.5f);
@@ -470,6 +540,26 @@ public class MelonCraft
         GameRegistry.registerBlock(blueMGST, "blueMGST");
         LanguageRegistry.addName(purpleMGST, "Magistone - dyed purple");
         GameRegistry.registerBlock(purpleMGST, "purpleMGST");
+        LanguageRegistry.addName(redMW, "Melonwool - dyed red");
+        GameRegistry.registerBlock(redMW, "redMW");
+        LanguageRegistry.addName(orangeMW, "Melonwool - dyed orange");
+        GameRegistry.registerBlock(orangeMW, "orangeMW");
+        LanguageRegistry.addName(yellowMW, "Melonwool - dyed yellow");
+        GameRegistry.registerBlock(yellowMW, "yellowMW");
+        LanguageRegistry.addName(limeMW, "Melonwool - dyed lime");
+        GameRegistry.registerBlock(limeMW, "limeMW");
+        LanguageRegistry.addName(greenMW, "Melonwool - dyed green");
+        GameRegistry.registerBlock(greenMW, "greenMW");
+        LanguageRegistry.addName(cyanMW, "Melonwool - dyed cyan");
+        GameRegistry.registerBlock(cyanMW, "cyanMW");
+        LanguageRegistry.addName(blueMW, "Melonwool - dyed blue");
+        GameRegistry.registerBlock(blueMW, "blueMW");
+        LanguageRegistry.addName(purpleMW, "Melonwool - dyed purple");
+        GameRegistry.registerBlock(purpleMW, "purpleMW");
+        LanguageRegistry.addName(greyMW, "Melonwool - dyed grey");
+        GameRegistry.registerBlock(greyMW, "greyMW");
+        LanguageRegistry.addName(normalMW, "Melonwool");
+        GameRegistry.registerBlock(normalMW, "normalMW");
         //Item naming
         LanguageRegistry.addName(melonstick, "Melonwood stick");
         LanguageRegistry.addName(melonwoodpick, "Melon-wood pick");
@@ -535,6 +625,16 @@ public class MelonCraft
         GameRegistry.addRecipe(new ItemStack(blueMGST, 2), "##", '#', cyanMGST);
         GameRegistry.addRecipe(new ItemStack(purpleMGST, 2), "##", '#', blueMGST);
         GameRegistry.addRecipe(new ItemStack(magistone, 2), "##", '#', purpleMGST);
+        GameRegistry.addRecipe(new ItemStack(redMW, 2), "##", '#', normalMW);
+        GameRegistry.addRecipe(new ItemStack(orangeMW, 2), "##", '#', redMW);
+        GameRegistry.addRecipe(new ItemStack(yellowMW, 2), "##", '#', orangeMW);
+        GameRegistry.addRecipe(new ItemStack(limeMW, 2), "##", '#', yellowMW);
+        GameRegistry.addRecipe(new ItemStack(greenMW, 2), "##", '#', limeMW);
+        GameRegistry.addRecipe(new ItemStack(cyanMW, 2), "##", '#', greenMW);
+        GameRegistry.addRecipe(new ItemStack(blueMW, 2), "##", '#', cyanMW);
+        GameRegistry.addRecipe(new ItemStack(purpleMW, 2), "##", '#', blueMW);
+        GameRegistry.addRecipe(new ItemStack(greyMW, 2), "##", '#', purpleMW);
+        GameRegistry.addRecipe(new ItemStack(normalMW, 2), "##", '#', greyMW);
         //Add biome
         biome = new MelonBiome(30);
         //Event handler

@@ -78,6 +78,7 @@ public class MelCraftinMan
         this.addRecipe(new ItemStack(MelonCraft.plasmasword, 1), new Object[] {"X", "X", "#", '#', MelonCraft.melonstick, 'X', MelonCraft.plasmaGem});
         this.addRecipe(new ItemStack(MelonCraft.melonSeedBlock, 1), new Object[] {"###", "###", "###", '#', Item.melonSeeds});*/
         this.addRecipe(new ItemStack(MelonCraft.moonstoneBlock, 1), new Object[] {"###", "###", "###", '#', MelonCraft.moonstoneIngot});
+        this.addRecipe(new ItemStack(MelonCraft.normalMW, 8), new Object[] {"###", "###", "###", '#', MelonCraft.melonleaves});
         this.addRecipe(new ItemStack(MelonCraft.moonstoneIngot, 9), new Object[] {"#", '#', MelonCraft.moonstoneBlock});
         this.addRecipe(new ItemStack(MelonCraft.moonstonecap, 1), new Object[] {"###", "# #", "   ", '#', MelonCraft.moonstoneIngot});
         this.addRecipe(new ItemStack(MelonCraft.melonwoodwandcore, 1), new Object[] {" $ ", "$#$", " $ ", '#', MelonCraft.melonplanks, '$', MelonCraft.melonstick});

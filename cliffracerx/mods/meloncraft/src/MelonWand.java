@@ -82,6 +82,11 @@ public class MelonWand extends Item
         }
         else
         {
+            if(par1ItemStack.getItemDamage()<this.manastorage+1 && focustype=="ice" && i1==MelonCraft.melonleavesID)
+            {
+                par3World.setBlockToAir(par4, par5, par6);
+                par2EntityPlayer.inventory.addItemStackToInventory(new ItemStack(MelonCraft.melonleaves));
+            }
             if(par1ItemStack.getItemDamage()<this.manastorage+1 && focustype=="fire")
             {
                 if (par7 == 0)
