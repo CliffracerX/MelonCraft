@@ -68,9 +68,10 @@ public class WorldGenMelTree extends WorldGenerator
                             k1 = par1World.getBlockId(l1, i1, j1);
 
                             Block block = Block.blocksList[k1];
-
-                            if (k1 != 0 &&
-                               !block.isLeaves(par1World, l1, i1, j1) &&
+							
+							if(k1 != 0  && block!=null)
+							{
+                            if (!block.isLeaves(par1World, l1, i1, j1) &&
                                 k1 != MelonCraft.melonGrass.blockID &&
                                 k1 != MelonCraft.melonDirt.blockID &&
                                 //k1 != MelonCraft.frostyGrass.blockID &&
@@ -78,6 +79,7 @@ public class WorldGenMelTree extends WorldGenerator
                             {
                                 flag = false;
                             }
+							}
                         }
                         else
                         {
